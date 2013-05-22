@@ -1,0 +1,49 @@
+<idea-plugin version="2">
+    <id>com.aptu.ijam.elang</id>
+    <name>ELang</name>
+    <version>1.0</version>
+    <vendor>IJAM</vendor>
+
+    <description><![CDATA[
+     Here is a test plugin for Intellij IDEA, supporting languages with interpreted grammar
+      ]]></description>
+
+    <change-notes><![CDATA[
+     Change notes are to be placed here.
+      ]]>
+    </change-notes>
+
+    <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="107.105"/>
+
+    <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
+
+    <project-components>
+        <!-- Add your project components here -->
+    </project-components>
+
+    <actions>
+        <!-- Add your actions here -->
+       <action id="com.extlang.RebuildGrammarAction" class="com.extlang.GrammarAction" text="Load this as a grammar file"
+                description="Use this as a source grammar for language parsing">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <fileTypeFactory implementation="com.extlang.ELFileTypeFactory"/>
+        <lang.parserDefinition language="EL" implementationClass="com.extlang.parser.ELParserDefinition"/>
+        <lang.parserDefinition language="BNF" implementationClass="com.extlang.parser.BNFParserDefinition"/>
+
+    </extensions>
+</idea-plugin>
