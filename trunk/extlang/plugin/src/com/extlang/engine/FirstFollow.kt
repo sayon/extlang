@@ -1,6 +1,6 @@
 package com.extlang.engine
 
-import com.extlang.extensions.cartesian
+import com.extlang.util.cartesian
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.HashSet
