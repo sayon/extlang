@@ -104,36 +104,36 @@ public class GrammarBuilder(tree: TreeElement) {
         var idx = -1
         for( elem in rhs)
         {
-            idx++
-            if ( !BNFParserDefinition.TOKENS_WHITE_SPACE.contains(elem.getElementType()))
-            {
-                val tidentOrDescr = elem.getChildren(null)!![0]
-                val tidentOrDescrName = tidentOrDescr.getElementType().toString()
-                when (tidentOrDescrName)
-                {
-                    "TIDENTIFIER" ->
-                        {
-                            val symb = syntax.symbolByName(tidentOrDescr.getText())
-                            if (symb == null) System.err.println("Can't find terminal with the name of ${tidentOrDescr.getText()}")
-                            else rhsPrepared.add(symb)
-                        }
-                    "NTTERMINALORALIASED" ->
-                        {
-                            val symb = syntax.symbolByName(tidentOrDescr.getChildren(NTIdentifierTokenSet)!![0].getText())
-                            if (symb == null)
-                                System.err.println("Can't find terminal with the name of ${tidentOrDescr.getText()}")
-                            else {
+            if ( BNFParserDefinition.TOKENS_WHITE_SPACE.contains(elem.getElementType())) continue
 
-                                val aliasarr = tidentOrDescr.getChildren(AliasTokenSet)!!
-                                if (!aliasarr.isEmpty())
-                                    Transforms.addAlias(rhsPrepared, idx, aliasarr[0].getText())
-                                rhsPrepared.add(symb)
-                            }
-                        }
-                    else -> {
+            idx++
+            val tidentOrDescr = elem.getChildren(null)!![0]
+            val tidentOrDescrName = tidentOrDescr.getElementType().toString()
+            when (tidentOrDescrName)
+            {
+                "TIDENTIFIER" ->
+                    {
+                        val symb = syntax.symbolByName(tidentOrDescr.getText())
+                        if (symb == null) System.err.println("Can't find terminal with the name of ${tidentOrDescr.getText()}")
+                        else rhsPrepared.add(symb)
                     }
+                "NTTERMINALORALIASED" ->
+                    {
+                        val symb = syntax.symbolByName(tidentOrDescr.getChildren(NTIdentifierTokenSet)!![0].getText())
+                        if (symb == null)
+                            System.err.println("Can't find terminal with the name of ${tidentOrDescr.getText()}")
+                        else {
+
+                            val aliasarr = tidentOrDescr.getChildren(AliasTokenSet)!!
+                            if (!aliasarr.isEmpty())
+                                Transforms.addAlias(rhsPrepared, idx, aliasarr[0].getText())
+                            rhsPrepared.add(symb)
+                        }
+                    }
+                else -> {
                 }
             }
+
         }
         syntax.addRule(syntax.symbolByName(lhs), rhsPrepared)
         if (isExtension)
@@ -142,7 +142,7 @@ public class GrammarBuilder(tree: TreeElement) {
 
     private fun addTree(trans: TreeTransformations, node: TreeElement, rule: Rule, nt: NonTerminal)
     {
-        Transforms.QTrees.put(rule, buildTreeRecursive(node))
+        Transforms.QTrees.put(rule, QTree(buildTreeRecursive(node)))
 
     }
     private fun buildTreeRecursive(node: TreeElement): QTreeNode

@@ -11,8 +11,8 @@ import com.extlang.engine.QTreeRefNode
 
 class Program: ArrayList<Instruction>()
 {
-    public fun repr(): String =
-            fold("", {(acc, elem) -> acc + "\n" + elem.repr() })
+    public override fun toString(): String =
+            fold("", {(acc, elem) -> acc + "\n" + elem.toString() })
 
     class object {
         public fun fromQTree(tree: QTree): Program
@@ -25,7 +25,7 @@ class Program: ArrayList<Instruction>()
                         prog.add(Instruction.TerminalNode(t.Term))
                     is QTreeNonTermNode -> {
                         prog.add(Instruction.NonTerminalNodeOpen(t.NonTerm))
-                        for( c in t.Children)
+                        for( c in t.Children )
                             traverse(c, prog)
                         prog.add(Instruction.NonTerminalNodeClose())
                     }

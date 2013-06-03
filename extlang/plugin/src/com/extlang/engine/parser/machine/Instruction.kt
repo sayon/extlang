@@ -6,29 +6,28 @@ import com.extlang.engine.Terminal
 
 abstract class Instruction
 {
-    abstract fun repr(): String
     class TerminalNode(public val Term: Terminal): Instruction()         {
-        public override fun repr(): String
+        public fun toString(): String
         {
             return "term ${Term.Name}"
         }
 
     }
     class NonTerminalNodeOpen(public val NonTerm: NonTerminal): Instruction() {
-        public override fun repr(): String
+        public fun toString(): String
         {
             return "nterm ${NonTerm.Name}"
         }
     }
     class NonTerminalNodeClose(): Instruction()                               {
-        public override fun repr(): String
+        public fun toString(): String
         {
             return "ntclose"
         }
     }
     class InsertTree(public val AliasName: String,
                      public val isPhantom: Boolean): Instruction(){
-        public override fun repr(): String
+        public fun toString(): String
         {
             return "Insert  $AliasName"
         }
@@ -36,7 +35,7 @@ abstract class Instruction
 
     class StoreNonTerminal(public val NonTerm: NonTerminal, public val AliasName: String): Instruction()
     {
-        public override fun repr(): String
+        public fun toString(): String
         {
             return "Begin $AliasName :: ${NonTerm.Name}"
         }

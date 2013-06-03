@@ -38,7 +38,7 @@ public class Rule(public val isExtension: Boolean = false): ArrayList<Symbol>()
 
     public fun setAlias(idx: Int, name:String)
     {
-        while (idx >= size) aliases.add(null)
+        while (idx >= aliases.size) aliases.add(null)
         aliases[idx] = name
     }
     public override fun add(s: Symbol): Boolean
@@ -50,10 +50,10 @@ public class Rule(public val isExtension: Boolean = false): ArrayList<Symbol>()
     {
         return aliases[idx] != null
     }
-    public fun getAliasName(idx: Int): String
+    public fun getAliasName(idx: Int): String?
     {
-        val ret = aliases[idx]
-        return if (ret == null) "" else ret
+        return if (idx >= aliases.size) null
+        else aliases[idx]
     }
 }
 

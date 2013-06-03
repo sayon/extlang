@@ -30,8 +30,6 @@ class QTreeNonTermNode(public val NonTerm: NonTerminal): QTreeNode()
 }
 
 
-class QTree
+class QTree (public var Root: QTreeNode? = null)
 {
-    public var Root: QTreeNode? = null
-
 }
