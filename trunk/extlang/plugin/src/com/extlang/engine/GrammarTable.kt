@@ -5,7 +5,7 @@ import java.util.ArrayList
 import com.extlang.extensions.cartesian
 
 
-public class GrammarTable(public val SyntaxProvided: FixedSyntax)
+public class GrammarTable(public val SyntaxProvided: ExtendedSyntax)
 {
     class object {
         public var Instance: GrammarTable? = null

@@ -3,21 +3,58 @@ package com.extlang.engine
 import java.util.ArrayList
 import java.util.HashMap
 
-public class Rule(): ArrayList<Symbol>()
+public class Rule(public val isExtension: Boolean = false): ArrayList<Symbol>()
 {
-    public override fun toString() : String
     {
-        return fold("", {(acc, elem) -> acc + elem.Name + " "})
+        counter++
+    }
+    public override fun toString(): String
+    {
+        return fold("", {(acc, elem) -> acc + elem.Name + " " })
     }
 
-    public fun equal(other : Rule ) :Boolean
+    public fun equal(other: Rule): Boolean
     {
         if (size != other.size) return false
-        for (i in 0..(size-1) )
-           if ( this[i].Name !=  other[i].Name ) return false
+        for (i in 0..(size - 1) )
+            if ( this[i].Name != other[i].Name ) return false
         return true
     }
 
+    class object {
+        var counter: Int = 0
+    }
+    public override fun hashCode(): Int
+    {
+        return counter
+    }
+    val aliases = ArrayList<String?>()
+
+    public fun addAlias(s: Symbol, name: String)
+    {
+        aliases.add(name)
+        super.add(s)
+    }
+
+    public fun setAlias(idx: Int, name:String)
+    {
+        while (idx >= size) aliases.add(null)
+        aliases[idx] = name
+    }
+    public override fun add(s: Symbol): Boolean
+    {
+        aliases.add(null)
+        return super.add(s)
+    }
+    public fun isAlias (idx: Int): Boolean
+    {
+        return aliases[idx] != null
+    }
+    public fun getAliasName(idx: Int): String
+    {
+        val ret = aliases[idx]
+        return if (ret == null) "" else ret
+    }
 }
 
 public abstract class Syntax
@@ -71,8 +108,8 @@ public abstract class Syntax
 
         sb.append("--starter: ${if (Starter == null) "null" else Starter!!.Name}\n")
         sb.append("--rules:\n")
-        forEachRule { (nt, rule) ->
-                sb.append ("${nt.Name} ::= ${rule} \n")
+        forEachRule {(nt, rule) ->
+            sb.append ("${nt.Name} ::= ${rule} \n")
         }
 
         return sb.toString()

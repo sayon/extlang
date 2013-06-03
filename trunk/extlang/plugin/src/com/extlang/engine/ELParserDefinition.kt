@@ -21,14 +21,15 @@ import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 import com.extlang.engine.ELParser
-import com.extlang.engine.ELASTNode
+import com.extlang.engine.parser.ELASTNode
+import com.extlang.engine.DeletedToken
 
 class ELParserDefinition: ParserDefinition
 {
     class object {
         val FILE: IFileElementType? = IFileElementType(Language.findInstance<ELLanguage?>(ELLanguage.INSTANCE!!.getClass()))
         val LOG = Logger.getInstance("#com.intellij.lang.properties.PropertiesParserDefinition")
-        val TOKENS_WHITE_SPACE = TokenSet.create(TokenType.WHITE_SPACE)
+        val TOKENS_WHITE_SPACE = TokenSet.create(TokenType.WHITE_SPACE, DeletedToken.Instance)
         val TOKENS_COMMENTS = TokenSet.EMPTY
     }
 

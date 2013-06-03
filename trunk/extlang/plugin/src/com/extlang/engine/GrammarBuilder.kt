@@ -16,80 +16,45 @@ val LHSTokenSet = TokenSet.create(BNFSimpleTypes.LEFTHANDSIDE)
 val RHSTokenSet = TokenSet.create(BNFSimpleTypes.RIGHTHANDSIDE)
 val TReprTokenSet = TokenSet.create(BNFSimpleTypes.TREPR)
 
-/** Once the grammar file is edited, the grammar inner representation must be rebuilt.
-This is atm done through creating instance of GrammarBuilder inside GrammarAction and changing
-FixedSyntax.Instance so that it corresponds to the new grammar.
-todo consider making a unified event-driven crawler for such trees.
- todo It can be of a great use when doing tree transformations, can it?
- decisionmaker, map something it returns -> bool, for each source make a callback
-*/
-
-open abstract class QTreeNode
-{
-
-    public abstract fun toString(): String
-}
-
-class QTreeRefNode(public val RefName: String): QTreeNode()
-{
-    public override fun toString(): String {
-        return "<ref: ${RefName}>"
-    }
-}
-class QTreeTermNode(public val Term: Terminal): QTreeNode()
-{
-    public override fun toString(): String
-    {
-        return "<${Term.Name}>"
-    }
-}
-
-class QTreeNonTermNode(public val NonTerm: NonTerminal): QTreeNode()
-{
-    public override fun toString(): String {
-        return "<${Children.fold("", {(acc, elem) -> acc + " " + elem })}>"
-    }
-    public val Children: ArrayList<QTreeNode> = ArrayList<QTreeNode>()
-}
 
 
-class QTree
-{
-    public var Root: QTreeNode? = null
-
-}
-
- class TreeTransformations
+public class TreeTransformations
 {
     public val QTrees: HashMap<Rule, QTree> = HashMap<Rule, QTree>()
-    public val Aliases: HashMap<
+    public val AliasesToIdx: HashMap<
             Rule,
-            HashMap<String, Pair<Rule, Int>>
-            > = HashMap<Rule, HashMap<String, Pair<Rule, Int>>>()
+            HashMap<String, Int>
+            > = HashMap<Rule, HashMap<String, Int>>()
+    public val IdxToAliases: HashMap<
+            Rule,
+            HashMap<Int, String>
+            > = HashMap<Rule, HashMap<Int, String>>()
     public fun addAlias(rule: Rule, idx: Int, alias: String)
     {
-        if (!Aliases.containsKey(rule))
-            Aliases.put(rule, HashMap<String, Pair<Rule, Int>>())
-        Aliases[rule]!!.put(alias, Pair(rule, idx))
+        if (!AliasesToIdx.containsKey(rule))
+            AliasesToIdx.put(rule, HashMap<String, Int>())
+        if (!IdxToAliases.containsKey(rule))
+            IdxToAliases.put(rule, HashMap<Int, String>())
+
+        AliasesToIdx[rule]!!.put(alias, idx)
+        IdxToAliases[rule]!!.put(idx, alias)
+        rule.setAlias(idx, alias)
     }
 
 }
 public class GrammarBuilder(tree: TreeElement) {
-    public val SyntaxBuilt: FixedSyntax ;
+    public val SyntaxBuilt: ExtendedSyntax ;
     public val Transforms: TreeTransformations ;
     public val ParsingTable: GrammarTable;
 
     {
-        SyntaxBuilt  = FixedSyntax()
+        SyntaxBuilt = ExtendedSyntax ()
         Transforms = TreeTransformations()
         fillSyntax(SyntaxBuilt, tree)
         ELToken.reinitializeTokens()
         ParsingTable = GrammarTable(SyntaxBuilt)
-
-     /*   for (tree in Transforms!!.QTrees.values())
-            System.err.println(tree.toString())*/
+        SyntaxBuilt.Transformations = Transforms
     }
-
 
 
     private fun fillSyntax(syntax: FixedSyntax, node: TreeElement)
@@ -133,7 +98,9 @@ public class GrammarBuilder(tree: TreeElement) {
     {
         val lhs = ruleNode.getChildren(LHSTokenSet)!![0].getText()!!
         val rhs = ruleNode.getChildren(RHSTokenSet)!![0].getChildren(null)!!
-        val rhsPrepared = Rule()
+        val quotedTreeNodeArr = ruleNode.getChildren(QuotedTreeTokenSet)!!
+        val isExtension = quotedTreeNodeArr.size == 1
+        val rhsPrepared = Rule(isExtension)
         var idx = -1
         for( elem in rhs)
         {
@@ -169,8 +136,7 @@ public class GrammarBuilder(tree: TreeElement) {
             }
         }
         syntax.addRule(syntax.symbolByName(lhs), rhsPrepared)
-        val quotedTreeNodeArr = ruleNode.getChildren(QuotedTreeTokenSet)!!
-        if (quotedTreeNodeArr.size == 1)
+        if (isExtension)
             addTree(Transforms, quotedTreeNodeArr[0] as TreeElement, rhsPrepared, syntax.symbolByName(lhs) as NonTerminal)
     }
 

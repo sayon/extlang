@@ -2,7 +2,7 @@ package com.extlang.engine
 
 import java.util.HashMap
 
-public class FixedSyntax: Syntax()
+public open class FixedSyntax: Syntax()
 {
     public val Reprs: HashMap<String, Terminal> = HashMap<String, Terminal>() ;
 
@@ -14,14 +14,19 @@ public class FixedSyntax: Syntax()
         addTerminal(TermEndOfFile.Instance)
     }
 
-    class object {
-        public var Instance: FixedSyntax = FixedSyntax()
-    }
 
     public fun addTerminal(repr: String, name: String)
     {
         val term = Terminal(name)
         Reprs.put(repr, term)
         super.addTerminal(term)
+    }
+}
+
+public class  ExtendedSyntax: FixedSyntax()
+{
+    public var Transformations: TreeTransformations? = null
+    class object {
+        public var Instance: ExtendedSyntax = ExtendedSyntax()
     }
 }

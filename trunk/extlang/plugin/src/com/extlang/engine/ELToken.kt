@@ -24,7 +24,7 @@ open class ELToken(public val Term: Symbol): IElementType(Term.Name, ELLanguage.
 
         public fun reinitializeTokens() {
             _existingTerminalTokens.clear()
-            for( kvp in FixedSyntax.Instance.Terminals)
+            for( kvp in ExtendedSyntax.Instance.Terminals)
                 addTerm(kvp.getValue())
         }
 
@@ -67,6 +67,12 @@ open class ELToken(public val Term: Symbol): IElementType(Term.Name, ELLanguage.
 
 }
 
+public class DeletedToken : ELToken(TermEndOfFile.Instance)
+{
+    class object {
+        public val Instance : DeletedToken = DeletedToken()
+    }
+}
 public class EndOfStream : ELToken(TermEndOfFile.Instance)
 {
     class object {

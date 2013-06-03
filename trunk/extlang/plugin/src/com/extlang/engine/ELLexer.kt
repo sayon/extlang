@@ -10,6 +10,7 @@ import com.intellij.lexer.LexerBase
 import com.intellij.lexer.LexerPosition
 import com.intellij.psi.TokenType
 import com.intellij.psi.tree.IElementType
+import com.extlang.engine.ExtendedSyntax
 
 /* We use token types derived from Token as well as standard types defined in TokenType.java*/
 public open class ELLexer(): LexerBase() {
@@ -55,21 +56,12 @@ public open class ELLexer(): LexerBase() {
 
     public override fun advance() {
         val startedAtPosition = _currentLexerPosition
-        val next = selectNext()
-        if (next == null && !_didOnce && _buffer!!.size != 0)
-        {
-            restore(position)
-            _didOnce = true
-            advance()
-        }
-        else
-        {
-            _currentToken = next
-            _tokenStartOffset = startedAtPosition
-            _tokenEndOffset = _currentLexerPosition
-        }
+        val next = selectNext();
 
-        System.err.println("$_tokenStartOffset : $_tokenEndOffset -> $_currentToken")
+        _currentToken = next
+        _tokenStartOffset = startedAtPosition
+        _tokenEndOffset = _currentLexerPosition
+        //System.err.println("$_tokenStartOffset : $_tokenEndOffset -> $_currentToken")
     }
     private fun selectNext(): IElementType?
     {
@@ -83,7 +75,7 @@ public open class ELLexer(): LexerBase() {
             return ELToken.fromTerminal(TermNumber.Instance)
 
         // one of terminal symbols
-        val term = tryConsumeTerminalToken(FixedSyntax.Instance.Reprs)
+        val term = tryConsumeTerminalToken(ExtendedSyntax.Instance.Reprs)
         if (term != null)
             return ELToken.fromTerminal(term)
 
@@ -122,6 +114,7 @@ public open class ELLexer(): LexerBase() {
             }
         return hasConsumedWhitespaces
     }
+
     private fun tryConsumeTerminalToken(terms: Map<String, Terminal>): Terminal?
     {
         val symbolsLeft = _endOffset - _currentLexerPosition
