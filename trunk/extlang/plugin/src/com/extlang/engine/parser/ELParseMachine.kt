@@ -71,10 +71,8 @@ class ELParseMachine(public val ParseTable: GrammarTable)
                 for (i in (rule.size - 1) downTo 0)
                 {
                     if (rule[i] == TermEpsilon.Instance) continue;
-                    push(
-                            Entry.SymbolHolder(rule[i], rule.getAliasName(i)))
+                    push(Entry.SymbolHolder(rule[i], rule.getAliasName(i)))
                 }
-
             }
             else
                 for (elem  in rule.reverse().filter { s -> s != TermEpsilon.Instance }) {
@@ -95,11 +93,9 @@ class ELParseMachine(public val ParseTable: GrammarTable)
         }
     }
 
-
     public fun parse(root: IElementType?, builder: PsiBuilder?): ASTNode
     {
         val m = builder!!.mark()!!
-        builder.mark()!!.done(ELToken.fromTerminal(ExtendedSyntax.Instance.symbolByName("WHILE")))
         val p = generateProgram(ParseTable.SyntaxProvided.Starter!!, builder)
         if (p != null)
         {
@@ -118,32 +114,35 @@ class ELParseMachine(public val ParseTable: GrammarTable)
     public fun executeProgram(program: Program,
                               builder: PsiBuilder,
                               environement: MutableMap<String, Program>,
-                              buildPhantomTree: Boolean)
+                              phantomTree: Boolean)
     {
+        var phantomTreeSwitch = phantomTree
         val stack = Stack<Pair<NonTerminal, Marker>>()
-        fun insertTerminal(b:PsiBuilder, term: Terminal) {
-            if (buildPhantomTree)
-                {
-                    val tok = ELToken.fromTerminal(term)
-                    b.mark()!!.done(tok)
-                }
-            else builder.advanceLexer()
+
+        fun PsiBuilder.insertTerminalNode(term: Terminal)
+        {
+            if (phantomTreeSwitch)
+                this.mark()!!.done(ELToken.fromTerminal(term))
+            else
+                this.advanceLexer()
         }
-        fun PsiBuilder.closeNonTerminal() {
+        fun PsiBuilder.nonTerminalNodeClose()
+        {
             val m = stack.pop()!!
             m.second.done(ELToken.fromNonTerminal(m.first))
         }
         for( instr in program)
             when (instr)
             {
-                is Instruction.TerminalNode -> insertTerminal(builder,instr.Term)
+                is Instruction.TerminalNode -> builder.insertTerminalNode(instr.Term)
+                is Instruction.PhantomOn -> phantomTreeSwitch = true
+                is Instruction.PhantomOff -> phantomTreeSwitch = false
                 is Instruction.NonTerminalNodeOpen -> stack.push(Pair(instr.NonTerm, builder.mark()!!))
-                is Instruction.NonTerminalNodeClose -> builder.closeNonTerminal()
+                is Instruction.NonTerminalNodeClose -> builder.nonTerminalNodeClose()
                 is Instruction.InsertTree -> executeProgram(environement[instr.AliasName]!!, builder, environement, instr.isPhantom)
                 is Instruction.StoreNonTerminal -> {
                     environement.put(instr.AliasName, generateProgram(instr.NonTerm, builder))
                 }
-
                 else -> {
                     throw UnsupportedOperationException("instruction ${instr.toString()} is not yet supported")
                 }
@@ -200,7 +199,6 @@ class ELParseMachine(public val ParseTable: GrammarTable)
         }
         while( stack.size > 1 && !error)
         {
-
             if ( stack.peek() is Entry.MarkerHolder )
             {
                 stack.pop()!!
@@ -212,7 +210,9 @@ class ELParseMachine(public val ParseTable: GrammarTable)
             if (top is Entry.QTreeHolder)
             {
                 val fromtree = Program.fromQTree(top.Tree)
+                program.add(Instruction.PhantomOn())
                 program.addAll(fromtree)
+                program.add(Instruction.PhantomOff())
                 stack.pop()
                 continue;
             }
@@ -220,9 +220,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
             when (ctoken)
             {
                 TokenType.BAD_CHARACTER -> return null
-                TokenType.WHITE_SPACE -> {
-                    advance()
-                }
+                TokenType.WHITE_SPACE -> advance()
                 is ELToken ->
                     {
                         if (top is SymbolHolder)
@@ -238,7 +236,6 @@ class ELParseMachine(public val ParseTable: GrammarTable)
                                         error = !applyRule(builder, ctoken)
                                     }
                             }
-
                     }
                 else -> {
                     builder.error("Bad element")
@@ -246,7 +243,6 @@ class ELParseMachine(public val ParseTable: GrammarTable)
                 }
             }
         }
-
         return if (error) null else program
     }
 

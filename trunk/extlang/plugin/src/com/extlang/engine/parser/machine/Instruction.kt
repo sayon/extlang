@@ -33,6 +33,20 @@ abstract class Instruction
         }
     }
 
+    class PhantomOn(): Instruction(){
+        public fun toString(): String
+        {
+            return "Phantom On"
+        }
+    }
+
+    class PhantomOff(): Instruction(){
+        public fun toString(): String
+        {
+            return "Phantom Off"
+        }
+    }
+
     class StoreNonTerminal(public val NonTerm: NonTerminal, public val AliasName: String): Instruction()
     {
         public fun toString(): String
