@@ -6,9 +6,9 @@ import com.extlang.engine.Terminal
 
 abstract class Instruction
 {
-    class TerminalNode(public val Term: Terminal): Instruction() {
+    class TerminalNode(public val Term: Terminal, public val Name:String? = null): Instruction() {
         public fun toString(): String =
-                "term ${Term.Name}"
+                "term ${Term.Name}" + if (Name == null) "" else " name: $Name"
     }
     class NonTerminalNodeOpen(public val NonTerm: NonTerminal): Instruction() {
         public fun toString(): String =

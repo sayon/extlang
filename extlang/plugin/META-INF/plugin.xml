@@ -29,7 +29,6 @@ Initial release
         <lang.parserDefinition language="EL" implementationClass="com.extlang.parser.ELParserDefinition"/>
         <lang.parserDefinition language="BNF" implementationClass="com.extlang.parser.BNFParserDefinition"/>
 
-        <lang.findUsagesProvider language="EL" implementationClass="com.extlang.engine.usages.ELFindUsagesProvider"/>
 
 
 

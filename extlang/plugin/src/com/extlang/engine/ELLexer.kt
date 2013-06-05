@@ -62,6 +62,7 @@ open class ELLexer(): LexerBase() {
     }
     private fun selectNext(): IElementType?
     {
+        val startedAtPosition = _currentLexerPosition
         if (_currentLexerPosition >= _endOffset)
             return  null
 
@@ -77,7 +78,11 @@ open class ELLexer(): LexerBase() {
             return ELToken.fromTerminal(term)
 
         // identifier
-        if (tryGetWord())  return ELToken.fromTerminal(TermIdent.Instance)
+        if (tryGetWord())
+        {
+            val identname = _buffer!!.subSequence(startedAtPosition, _currentLexerPosition).toString()
+            return ELToken.fromIdentifier(identname)
+        }
 
         _currentLexerPosition++
         return TokenType.BAD_CHARACTER

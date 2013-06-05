@@ -9,3 +9,4 @@ public class Icons {
     public static final Icon CODEFILE = IconLoader.getIcon("/com/extlang/icons/code.png");
 
 }
+

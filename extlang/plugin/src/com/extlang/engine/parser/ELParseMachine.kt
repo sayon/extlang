@@ -114,13 +114,6 @@ class ELParseMachine(public val ParseTable: GrammarTable)
         var phantomTreeSwitch = phantomTree
         val stack = Stack<Pair<NonTerminal, Marker>>()
 
-        fun PsiBuilder.insertTerminalNode(term: Terminal)
-        {
-            if (phantomTreeSwitch)
-                this.mark()!!.done(ELToken.fromTerminal(term))
-            else
-                this.advanceLexer()
-        }
         fun PsiBuilder.nonTerminalNodeClose()
         {
             val m = stack.pop()!!
@@ -130,7 +123,20 @@ class ELParseMachine(public val ParseTable: GrammarTable)
             when (instr)
             {
                 is Instruction.TerminalNode ->
-                    builder.insertTerminalNode(instr.Term)
+                    {
+                        // I wanted to use an inner function for that, but Kotlin crashed, so...
+                        if (phantomTreeSwitch)
+                        {
+                            if (instr.Term == TermIdent.Instance)
+                            {
+                                val tok = ELToken.fromIdentifier(instr.Name)
+                                builder.mark()!!.done(tok)
+                            }
+                            else builder.mark()!!.done(ELToken.fromTerminal(instr.Term))
+                        }
+                        else
+                            builder.advanceLexer()
+                    }
                 is Instruction.PhantomOn ->
                     phantomTreeSwitch = true
                 is Instruction.PhantomOff ->
@@ -228,7 +234,10 @@ class ELParseMachine(public val ParseTable: GrammarTable)
                             when  (top.Sym)
                             {
                                 ctoken.Term -> {
-                                    program.add(Instruction.TerminalNode(ctoken.Term));
+
+                                    val name = if (ctoken is TokIdentifier) ctoken.Name else null
+                                    program.add(Instruction.TerminalNode(ctoken.Term, name));
+
                                     stack.pop();
                                     advance()
                                 }
