@@ -21,12 +21,12 @@ open class ELToken(public val Term: Symbol): IElementType(Term.Name, ELLanguage.
 
     class object {
         //todo do we really need this one? We can use 'is TokIdentifier'
-        public fun AllIdentifiers() : TokenSet
-            {
-                return _allIdentifiers
-            }
+        public fun AllIdentifiers(): TokenSet
+        {
+            return _allIdentifiers
+        }
 
-        var _allIdentifiers : TokenSet= TokenSet.EMPTY
+        var _allIdentifiers: TokenSet = TokenSet.EMPTY
 
         val _existingTerminalTokens: HashMap<Terminal, ELToken> = HashMap<Terminal, ELToken>() ;
         val _existingNonTerminalTokens: HashMap<NonTerminal, ELToken> = HashMap<NonTerminal, ELToken>() ;

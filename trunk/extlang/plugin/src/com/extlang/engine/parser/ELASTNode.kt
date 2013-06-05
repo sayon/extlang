@@ -10,9 +10,13 @@ import com.extlang.engine.TermIdent
 
 public class ELASTNode(node: ASTNode): ASTWrapperPsiElement(node), ELNamedElement
 {
-    var _name: String = ""
+    public var Name: String = ""
     public override fun setName(name: String): PsiElement? {
-        _name = name // Maybe it should make a copy, should it?
+        val elem = findChildByFilter(ELToken.AllIdentifiers())
+        if (elem != null)
+        {
+            (elem as ELASTNode ).Name = name
+        }//todo Maybe it should make a copy, should it?
         return this
     }
     public override fun getNameIdentifier(): PsiElement?

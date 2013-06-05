@@ -12,28 +12,22 @@ import com.extlang.parser.ELParserDefinition
 import com.extlang.engine.TermNumber
 import com.extlang.engine.TermIdent
 import com.extlang.engine.parser.ELASTNode
+import com.extlang.engine.TokIdentifier
 
 
 public class ELFindUsagesProvider: FindUsagesProvider{
 
-    class object
-    {
-        val scanner: DefaultWordsScanner;
-        {
-            val lexer = ELLexer()
-            val identifiers = TokenSet.create(ELToken.fromTerminal(TermIdent.Instance))
-            val comments = TokenSet.EMPTY
-            val literals = TokenSet.create(ELToken.fromTerminal(TermNumber.Instance))
-            scanner = DefaultWordsScanner(lexer, identifiers, comments, literals)
-        }
-    }
+
     public override fun getWordsScanner(): WordsScanner? {
-        return scanner
+        val lexer = ELLexer()
+        val identifiers = ELToken.AllIdentifiers()
+        val comments = TokenSet.EMPTY
+        val literals = TokenSet.create(ELToken.fromTerminal(TermNumber.Instance))
+        return DefaultWordsScanner(lexer, identifiers, comments, literals)
     }
     public override fun canFindUsagesFor(psiElement: PsiElement): Boolean {
-
         val token = psiElement.getNode()!!.getElementType()
-        return  token == ELToken.fromTerminal(TermIdent.Instance)
+        return  token is TokIdentifier
 
     }
     public override fun getHelpId(psiElement: PsiElement): String? =
