@@ -10,10 +10,10 @@ import com.intellij.lexer.LexerBase
 import com.intellij.lexer.LexerPosition
 import com.intellij.psi.TokenType
 import com.intellij.psi.tree.IElementType
-import com.extlang.engine.ExtendedSyntax
+import com.extlang.engine.model.ExtendedSyntax
 
-/* We use token types derived from Token as well as standard types defined in TokenType.java*/
-public open class ELLexer(): LexerBase() {
+/* We use token types derived from ELToken as well as standard types defined in TokenType.java*/
+open class ELLexer(): LexerBase() {
 
     var _buffer: CharSequence? = null
     var _startOffset: Int = 0
@@ -23,8 +23,6 @@ public open class ELLexer(): LexerBase() {
 
     var _currentLexerPosition = 0
 
-    var _didOnce = false
-    //  var _returnedEndOfStream  = false
 
     public override fun start(buffer: CharSequence?, startOffset: Int, endOffset: Int, initialState: Int) {
         _buffer = buffer
@@ -33,7 +31,7 @@ public open class ELLexer(): LexerBase() {
         _initialState = initialState
         _currentState = initialState
         _currentLexerPosition = _startOffset
-        _didOnce = false
+
 
         position = getCurrentPosition()
         advance()
@@ -61,7 +59,6 @@ public open class ELLexer(): LexerBase() {
         _currentToken = next
         _tokenStartOffset = startedAtPosition
         _tokenEndOffset = _currentLexerPosition
-        //System.err.println("$_tokenStartOffset : $_tokenEndOffset -> $_currentToken")
     }
     private fun selectNext(): IElementType?
     {

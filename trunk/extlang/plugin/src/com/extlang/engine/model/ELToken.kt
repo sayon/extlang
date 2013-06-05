@@ -2,8 +2,9 @@ package com.extlang.engine
 
 import com.intellij.psi.tree.IElementType
 import java.util.HashMap
-
-class IdentifierContext(public val Context: Int)
+import com.extlang.engine.model.ExtendedSyntax
+import com.intellij.psi.PsiNameIdentifierOwner
+import com.intellij.extapi.psi.ASTWrapperPsiElement
 
 
 open class ELToken(public val Term: Symbol): IElementType(Term.Name, ELLanguage.INSTANCE)
@@ -18,6 +19,8 @@ open class ELToken(public val Term: Symbol): IElementType(Term.Name, ELLanguage.
     class object {
         private val _existingTerminalTokens: HashMap<Terminal, ELToken> = HashMap<Terminal, ELToken>() ;
         private val _existingNonTerminalTokens: HashMap<NonTerminal, ELToken> = HashMap<NonTerminal, ELToken>() ;
+
+        //ctor
         {
             reinitializeTokens()
         }
@@ -28,9 +31,6 @@ open class ELToken(public val Term: Symbol): IElementType(Term.Name, ELLanguage.
                 addTerm(kvp.getValue())
         }
 
-
-        /** Kind of a lazy initialization
-        */
         public fun fromTerminal(t: Terminal): ELToken
         {
             val res = _existingTerminalTokens.get(t)
@@ -59,20 +59,10 @@ open class ELToken(public val Term: Symbol): IElementType(Term.Name, ELLanguage.
         }
     }
 
-    public override fun toString(): String
-    {
-        return "[${Term.Name}]"
-    }
-
-
+    public override fun toString(): String =
+            "[${Term.Name}]"
 }
 
-public class DeletedToken : ELToken(TermEndOfFile.Instance)
-{
-    class object {
-        public val Instance : DeletedToken = DeletedToken()
-    }
-}
 public class EndOfStream : ELToken(TermEndOfFile.Instance)
 {
     class object {

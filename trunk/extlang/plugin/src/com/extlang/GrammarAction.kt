@@ -15,7 +15,7 @@ import com.intellij.ui.popup.PopupComponent.Factory.Dialog
 import com.intellij.openapi.ui.Messages
 import com.extlang.grammar.BNFLanguage
 import com.extlang.grammar.psi.BNFSimpleTypes
-import com.extlang.engine.ExtendedSyntax
+import com.extlang.engine.model.ExtendedSyntax
 
 public open class GrammarAction(): AnAction() {
     public override fun actionPerformed(e: AnActionEvent?): Unit {
@@ -31,6 +31,8 @@ public open class GrammarAction(): AnAction() {
             ExtendedSyntax.Instance = grammarBuilder.SyntaxBuilt
             ExtendedSyntax.Instance.Transformations = grammarBuilder.Transforms
             GrammarTable.Instance = GrammarTable(ExtendedSyntax.Instance)
+
+            EventLog.LogEntry("HELLO", null, null)
 
             System.err.println(ExtendedSyntax.Instance.representation())
             System.err.println(GrammarTable.Instance!!.representation())

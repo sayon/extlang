@@ -6,14 +6,15 @@ import java.util.HashSet
 
 class ELASTNode(node: ASTNode): ASTWrapperPsiElement(node)
 {
-    class object {
+    /*class object {
         val Nodes: HashSet<ELASTNode> = HashSet<ELASTNode>()
     }
     {
         Nodes.add(this)
     }
 
+
     {
         //System.err.println("Created element with ${ node.getElementType().toString()} text ${this.getText()}")
-    }
+   */
 }

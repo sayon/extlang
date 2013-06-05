@@ -22,11 +22,3 @@ public open class FixedSyntax: Syntax()
         super.addTerminal(term)
     }
 }
-
-public class  ExtendedSyntax: FixedSyntax()
-{
-    public var Transformations: TreeTransformations? = null
-    class object {
-        public var Instance: ExtendedSyntax = ExtendedSyntax()
-    }
-}

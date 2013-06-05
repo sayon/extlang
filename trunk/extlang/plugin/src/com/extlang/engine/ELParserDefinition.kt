@@ -22,14 +22,13 @@ import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 import com.extlang.engine.ELParser
 import com.extlang.engine.parser.ELASTNode
-import com.extlang.engine.DeletedToken
 
 class ELParserDefinition: ParserDefinition
 {
     class object {
         val FILE: IFileElementType? = IFileElementType(Language.findInstance<ELLanguage?>(ELLanguage.INSTANCE!!.getClass()))
         val LOG = Logger.getInstance("#com.intellij.lang.properties.PropertiesParserDefinition")
-        val TOKENS_WHITE_SPACE = TokenSet.create(TokenType.WHITE_SPACE, DeletedToken.Instance)
+        val TOKENS_WHITE_SPACE = TokenSet.create(TokenType.WHITE_SPACE)
         val TOKENS_COMMENTS = TokenSet.EMPTY
     }
 
@@ -49,7 +48,7 @@ class ELParserDefinition: ParserDefinition
         return TokenSet.EMPTY
     }
     public override fun getStringLiteralElements(): TokenSet {
-        return TokenSet.EMPTY //No string literals allowed atm. Todo implement string literals
+        return TokenSet.EMPTY
     }
     public override fun createElement(node: ASTNode?): PsiElement {
         return ELASTNode(node!!)

@@ -6,6 +6,7 @@ import com.intellij.psi.impl.source.tree.TreeElement
 import com.intellij.psi.tree.TokenSet
 import java.util.ArrayList
 import java.util.HashMap
+import com.extlang.engine.model.ExtendedSyntax
 
 val TIdentifierTokenSet = TokenSet.create(BNFSimpleTypes.TIDENTIFIER);
 val NTIdentifierTokenSet = TokenSet.create(BNFSimpleTypes.NTIDENTIFIER);
@@ -137,13 +138,12 @@ public class GrammarBuilder(tree: TreeElement) {
         }
         syntax.addRule(syntax.symbolByName(lhs), rhsPrepared)
         if (isExtension)
-            addTree(Transforms, quotedTreeNodeArr[0] as TreeElement, rhsPrepared, syntax.symbolByName(lhs) as NonTerminal)
+            addTree(quotedTreeNodeArr[0] as TreeElement, rhsPrepared)
     }
 
-    private fun addTree(trans: TreeTransformations, node: TreeElement, rule: Rule, nt: NonTerminal)
+    private fun addTree(node: TreeElement, rule: Rule)
     {
         Transforms.QTrees.put(rule, QTree(buildTreeRecursive(node)))
-
     }
     private fun buildTreeRecursive(node: TreeElement): QTreeNode
     {

@@ -5,7 +5,7 @@ import java.util.ArrayList
 import java.util.HashMap
 import java.util.HashSet
 
-public class FirstFollow (public val SyntaxProvided: Syntax)
+class FirstFollow (public val SyntaxProvided: Syntax)
 {
     private var _first: HashMap<Symbol, HashSet<Terminal>> = HashMap<Symbol, HashSet<Terminal>>();
     private var _follow: HashMap<NonTerminal, HashSet<Terminal>> = HashMap<NonTerminal, HashSet<Terminal>>();
