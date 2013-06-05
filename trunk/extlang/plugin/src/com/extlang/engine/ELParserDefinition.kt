@@ -22,6 +22,8 @@ import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 import com.extlang.engine.ELParser
 import com.extlang.engine.parser.ELASTNode
+import com.extlang.engine.ELToken
+import com.extlang.engine.TermIdent
 
 class ELParserDefinition: ParserDefinition
 {
@@ -52,7 +54,6 @@ class ELParserDefinition: ParserDefinition
     }
     public override fun createElement(node: ASTNode?): PsiElement {
         return ELASTNode(node!!)
-
     }
     public override fun createFile(viewProvider: FileViewProvider?): PsiFile? {
         return ELFile(viewProvider!!)

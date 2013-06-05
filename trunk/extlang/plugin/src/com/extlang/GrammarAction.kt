@@ -32,8 +32,6 @@ public open class GrammarAction(): AnAction() {
             ExtendedSyntax.Instance.Transformations = grammarBuilder.Transforms
             GrammarTable.Instance = GrammarTable(ExtendedSyntax.Instance)
 
-            EventLog.LogEntry("HELLO", null, null)
-
             System.err.println(ExtendedSyntax.Instance.representation())
             System.err.println(GrammarTable.Instance!!.representation())
 

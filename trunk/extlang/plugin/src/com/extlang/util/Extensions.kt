@@ -1,6 +1,7 @@
 package com.extlang.util
 
 import java.util.ArrayList
+import java.util.HashMap
 
 
 public fun CharSequence.compareWith (startPosition: Int, seq: String): Boolean {
@@ -43,6 +44,4 @@ class PairList <T, U>  : ArrayList<Pair<T,U>>()
         }
         return null
     }
-
 }
-
