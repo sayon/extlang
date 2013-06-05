@@ -21,39 +21,39 @@ import com.extlang.parser.ELParserDefinition
 import java.util.HashMap
 import com.extlang.engine.parser.machine.Instruction
 import com.extlang.engine.parser.machine.Program
-import com.extlang.engine.parser.Entry.SymbolHolder
 
 
-private abstract class Entry()
-{
-    class MarkerHolder(public val Mark: Marker?, public val TokenType: ELToken): Entry ()
-    {
-        public fun done()
-        {
-            if (Mark != null) Mark.done(TokenType)
-        }
-        public fun toString(): String
-        {
-            return "Marker ${TokenType.Term}"
-        }
-    }
-    class SymbolHolder(public val Sym: Symbol, public val AliasedName: String? = null): Entry ()
-    {
-        public fun toString(): String
-        {
-            return "${Sym.toString()}, alias=${AliasedName}"
-        }
-    }
-    class QTreeHolder(public val Tree: QTree, public val Context: Map<String, Program>? = null): Entry()
-    {
-        public fun toString(): String
-        {
-            return "QTree${Tree.Root.toString()}"
-        }
-    }
-}
 class ELParseMachine(public val ParseTable: GrammarTable)
 {
+
+    private abstract class Entry()
+    {
+        class MarkerHolder(public val Mark: Marker?, public val TokenType: ELToken): Entry ()
+        {
+            public fun done()
+            {
+                if (Mark != null) Mark.done(TokenType)
+            }
+            public fun toString(): String
+            {
+                return "Marker ${TokenType.Term}"
+            }
+        }
+        class SymbolHolder(public val Sym: Symbol, public val AliasedName: String? = null): Entry ()
+        {
+            public fun toString(): String
+            {
+                return "${Sym.toString()}, alias=${AliasedName}"
+            }
+        }
+        class QTreeHolder(public val Tree: QTree, public val Context: Map<String, Program>? = null): Entry()
+        {
+            public fun toString(): String
+            {
+                return "QTree${Tree.Root.toString()}"
+            }
+        }
+    }
 
     inner class ParsingStack: Stack<Entry>()
     {
@@ -84,11 +84,9 @@ class ELParseMachine(public val ParseTable: GrammarTable)
 
         public override fun toString(): String
         {
-            val sb = StringBuilder ()
-            for (elem in this) {
-                sb.append(" ")
-                sb.append(elem)
-            }
+            val sb = StringBuilder()
+            for (elem in this)
+                sb.append(" $elem")
             return sb.toString()
         }
     }
@@ -98,14 +96,11 @@ class ELParseMachine(public val ParseTable: GrammarTable)
         val m = builder!!.mark()!!
         val p = generateProgram(ParseTable.SyntaxProvided.Starter!!, builder)
         if (p != null)
-        {
             executeProgram(p, builder, HashMap<String, Program>(), false)
-        }
         else System.err.println("Empty program")
 
         while(!builder.eof())
             builder.advanceLexer()
-
         m.done(root)
         return builder.getTreeBuilt()!!
     }
@@ -134,18 +129,24 @@ class ELParseMachine(public val ParseTable: GrammarTable)
         for( instr in program)
             when (instr)
             {
-                is Instruction.TerminalNode -> builder.insertTerminalNode(instr.Term)
-                is Instruction.PhantomOn -> phantomTreeSwitch = true
-                is Instruction.PhantomOff -> phantomTreeSwitch = false
-                is Instruction.NonTerminalNodeOpen -> stack.push(Pair(instr.NonTerm, builder.mark()!!))
-                is Instruction.NonTerminalNodeClose -> builder.nonTerminalNodeClose()
-                is Instruction.InsertTree -> executeProgram(environement[instr.AliasName]!!, builder, environement, instr.isPhantom)
-                is Instruction.StoreNonTerminal -> {
+                is Instruction.TerminalNode ->
+                    builder.insertTerminalNode(instr.Term)
+                is Instruction.PhantomOn ->
+                    phantomTreeSwitch = true
+                is Instruction.PhantomOff ->
+                    phantomTreeSwitch = false
+                is Instruction.NonTerminalNodeOpen ->
+                    stack.push(Pair(instr.NonTerm, builder.mark()!!))
+                is Instruction.NonTerminalNodeClose ->
+                    builder.nonTerminalNodeClose()
+                is Instruction.InsertTree ->
+                    executeProgram(environement[instr.AliasName]!!, builder, environement, instr.isPhantom)
+                is Instruction.StoreNonTerminal ->
                     environement.put(instr.AliasName, generateProgram(instr.NonTerm, builder))
-                }
-                else -> {
+
+                else ->
                     throw UnsupportedOperationException("instruction ${instr.toString()} is not yet supported")
-                }
+
             }
     }
 
@@ -171,7 +172,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
         }
         fun applyRule(builder: PsiBuilder, ctoken: ELToken): Boolean
         {
-            val sym = (stack.peek() as SymbolHolder).Sym
+            val sym = (stack.peek() as Entry.SymbolHolder).Sym
             val key = Pair(sym, ctoken.Term)
             if (!ParseTable.Table.containsKey(key))
             {
@@ -181,7 +182,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
             val rules = ParseTable.Table[key]!!
             when (rules.size ){
                 1 -> {
-                    val top = (stack.peek() as SymbolHolder).Sym as NonTerminal
+                    val top = (stack.peek() as Entry.SymbolHolder).Sym as NonTerminal
                     val rule = rules[0]
                     stack.pop()
                     stack.pushMarker(null, top)
@@ -223,11 +224,13 @@ class ELParseMachine(public val ParseTable: GrammarTable)
                 TokenType.WHITE_SPACE -> advance()
                 is ELToken ->
                     {
-                        if (top is SymbolHolder)
+                        if (top is Entry.SymbolHolder)
                             when  (top.Sym)
                             {
                                 ctoken.Term -> {
-                                    program.add(Instruction.TerminalNode(ctoken.Term)); stack.pop(); advance()
+                                    program.add(Instruction.TerminalNode(ctoken.Term));
+                                    stack.pop();
+                                    advance()
                                 }
                                 else ->
                                     {

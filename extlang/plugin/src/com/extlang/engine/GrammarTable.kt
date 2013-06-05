@@ -3,6 +3,7 @@ package com.extlang.engine
 import java.util.HashMap
 import java.util.ArrayList
 import com.extlang.util.cartesian
+import com.extlang.engine.model.ExtendedSyntax
 
 
 public class GrammarTable(public val SyntaxProvided: ExtendedSyntax)

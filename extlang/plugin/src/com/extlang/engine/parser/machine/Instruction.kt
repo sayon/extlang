@@ -6,52 +6,40 @@ import com.extlang.engine.Terminal
 
 abstract class Instruction
 {
-    class TerminalNode(public val Term: Terminal): Instruction()         {
-        public fun toString(): String
-        {
-            return "term ${Term.Name}"
-        }
-
+    class TerminalNode(public val Term: Terminal): Instruction() {
+        public fun toString(): String =
+                "term ${Term.Name}"
     }
     class NonTerminalNodeOpen(public val NonTerm: NonTerminal): Instruction() {
-        public fun toString(): String
-        {
-            return "nterm ${NonTerm.Name}"
-        }
+        public fun toString(): String =
+                "nterm ${NonTerm.Name}"
+
     }
-    class NonTerminalNodeClose(): Instruction()                               {
-        public fun toString(): String
-        {
-            return "ntclose"
-        }
+    class NonTerminalNodeClose(): Instruction() {
+        public fun toString(): String =
+                "ntclose"
+
     }
     class InsertTree(public val AliasName: String,
                      public val isPhantom: Boolean): Instruction(){
-        public fun toString(): String
-        {
-            return "Insert  $AliasName"
-        }
+        public fun toString(): String =
+                "Insert  $AliasName"
     }
 
     class PhantomOn(): Instruction(){
-        public fun toString(): String
-        {
-            return "Phantom On"
-        }
+        public fun toString(): String =
+                "Phantom On"
+
     }
 
     class PhantomOff(): Instruction(){
-        public fun toString(): String
-        {
-            return "Phantom Off"
-        }
+        public fun toString(): String =
+                "Phantom Off"
     }
 
     class StoreNonTerminal(public val NonTerm: NonTerminal, public val AliasName: String): Instruction()
     {
-        public fun toString(): String
-        {
-            return "Begin $AliasName :: ${NonTerm.Name}"
-        }
+        public fun toString(): String =
+                "Begin $AliasName :: ${NonTerm.Name}"
     }
 }
