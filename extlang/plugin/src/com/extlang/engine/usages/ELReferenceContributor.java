@@ -8,7 +8,7 @@ import com.intellij.psi.*;
 import com.intellij.util.ProcessingContext;
 import org.jetbrains.annotations.NotNull;
 import org.picocontainer.defaults.SimpleReference;
-
+             /*
 public class ELReferenceContributor extends PsiReferenceContributor {
     @Override
     public void registerReferenceProviders(PsiReferenceRegistrar registrar) {
@@ -22,4 +22,4 @@ public class ELReferenceContributor extends PsiReferenceContributor {
                     }
                 });
     }
-}
+*/

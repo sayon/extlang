@@ -14,19 +14,12 @@ class UsagesUtil
 {
     class object {
         public fun getReferencesByElement(element: PsiElement, context: ProcessingContext): Array<PsiReference> {
-            val res = ArrayList<PsiReference>()
             if (element is ELASTNode)
             {
-
-                val tok = element.getNode()!!.getFirstChildNode()!!.getElementType()
-                if (tok is TokIdentifier )
-                {
-                    val identifiers = Util.findIdentifiers(element.getProject(), tok.Name)
-                    val ret = identifiers.map {(node) -> ELReference(node.getPsi(), node.getTextRange()) }.toArray(array() : Array<PsiReference>)
-
-                    return ret
-                }
-                else return array()
+                val key = element.getName()
+                val identifiers = Util.findIdentifiers(element.getProject(), key)
+                val ret = identifiers.map {(node) -> ELReference(node.getPsi(), node.getTextRange()) }.toArray(array() : Array<PsiReference>)
+                return ret
             }
             else
                 return array()
