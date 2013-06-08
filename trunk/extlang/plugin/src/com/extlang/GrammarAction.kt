@@ -32,9 +32,8 @@ public open class GrammarAction(): AnAction() {
             ExtendedSyntax.Instance = grammarBuilder.ParsingTable.SyntaxProvided
 
             GrammarTable.Instance = GrammarTable(ExtendedSyntax.Instance)
+            System.err.println(ExtendedSyntax.Instance.representation())
             System.err.println(GrammarTable.Instance!!.representation())
-            //    System.err.println(ExtendedSyntax.Instance.representation())
-            //    System.err.println(GrammarTable.Instance!!.representation())
 
         }
     }

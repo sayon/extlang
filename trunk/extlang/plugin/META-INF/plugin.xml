@@ -29,7 +29,6 @@ Initial release
         <lang.parserDefinition language="EL" implementationClass="com.extlang.parser.ELParserDefinition"/>
         <lang.parserDefinition language="BNF" implementationClass="com.extlang.parser.BNFParserDefinition"/>
 
-        <psi.referenceContributor language="EL" implementation="com.extlang.engine.usages.ELReferenceContributor"/>
 
         <lang.findUsagesProvider language="EL" implementationClass="com.extlang.engine.usages.ELFindUsagesProvider"/>
 
@@ -38,3 +37,7 @@ Initial release
 
     </extensions>
 </idea-plugin>
+
+
+
+        <!--  <psi.referenceContributor language="EL" implementation="com.extlang.engine.usages.ELReferenceContributor"/>-->

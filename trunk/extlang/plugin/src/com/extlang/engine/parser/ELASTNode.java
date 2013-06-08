@@ -37,21 +37,25 @@ public class ELASTNode extends ASTWrapperPsiElement implements PsiNamedElement {
      */
     @Override
     public PsiElement setName(@NonNls @NotNull String name) throws IncorrectOperationException {
-        PsiElement elem = findChildByFilter(ELToken.object.$instance.AllIdentifiers());
-        if (elem != null) ((ELASTNode) (elem.getNode())).Name = name;
+        PsiElement elem = getFirstChild();  //findChildByFilter(ELToken.object.$instance.AllIdentifiers());
+        if (elem != null && (elem.getNode().getElementType() instanceof TokIdentifier)) {
+            final ELASTNode toknode = (ELASTNode) (elem.getNode());
+            toknode.Name = name;
+        }
         return this;
     }
 
     @Override
     public String getName() {
         final PsiElement elem;
-        elem = findChildByFilter(ELToken.object.$instance.AllIdentifiers());
+        elem = getFirstChild();
         if (elem != null) {
             final IElementType et = ((LeafPsiElement) elem).getElementType();
-            return ((TokIdentifier) et).getName();
+            if (et instanceof TokIdentifier)
+                return ((TokIdentifier) et).getName();
         }
         return null;
-     }
+    }
 
 
     @Override
@@ -60,10 +64,10 @@ public class ELASTNode extends ASTWrapperPsiElement implements PsiNamedElement {
         if (references.length > 0) return references[0];
         else return null;
     }
+
     @Override
-    public PsiReference[] getReferences()
-    {
-        return UsagesUtil.object.$instance.getReferencesByElement(this,new ProcessingContext() );
+    public PsiReference[] getReferences() {
+        return UsagesUtil.object.$instance.getReferencesByElement(this, new ProcessingContext());
     }
 
 }

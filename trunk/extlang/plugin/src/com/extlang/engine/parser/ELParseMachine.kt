@@ -72,12 +72,16 @@ class ELParseMachine(public val ParseTable: GrammarTable)
         public fun pushRule(rule: Rule)
         {
             if (rule.isExtension)
+            {
                 for (i in (rule.size - 1) downTo 0)
                     if (rule[i] != TermEpsilon.Instance)
                         push(Entry.SymbolHolder(rule[i], rule.getAliasName(i)))
-                    else
-                        for (elem  in rule.reverse().filter { s -> s != TermEpsilon.Instance })
-                            push(Entry.SymbolHolder(elem))
+            }
+            else
+                for (elem  in rule.reverse() ) {
+                    if (elem != TermEpsilon.Instance)
+                        push(Entry.SymbolHolder(elem))
+                }
         }
         public fun pushMarker(marker: Marker?, symbol: NonTerminal): Entry =
                 push(Entry.MarkerHolder(marker, ELToken.fromNonTerminal(symbol)))!!
@@ -160,8 +164,8 @@ class ELParseMachine(public val ParseTable: GrammarTable)
             }
     }
 
-   /**Generates program to parse NonTerminal nt with PsiBuilder builder
-   */
+    /**Generates program to parse NonTerminal nt with PsiBuilder builder
+    */
     public fun generateProgram(nt: NonTerminal, builder: PsiBuilder): Program? {
         val program = Program()
         val stack = ParsingStack()
