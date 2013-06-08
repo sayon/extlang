@@ -1,6 +1,7 @@
 package com.extlang.engine.usages;
 
 
+import com.extlang.engine.model.TokIdentifier;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.patterns.PlatformPatterns;
 import com.intellij.psi.*;
@@ -12,7 +13,7 @@ public class ELReferenceContributor extends PsiReferenceContributor {
     @Override
     public void registerReferenceProviders(PsiReferenceRegistrar registrar) {
 
-        registrar.registerReferenceProvider(PlatformPatterns.psiElement(PsiLiteralExpression.class),
+        registrar.registerReferenceProvider(PlatformPatterns.psiElement(),
                 new PsiReferenceProvider() {
                     @NotNull
                     @Override

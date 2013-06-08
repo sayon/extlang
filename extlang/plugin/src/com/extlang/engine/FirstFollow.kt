@@ -4,8 +4,11 @@ import com.extlang.util.cartesian
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.HashSet
+import com.extlang.engine.model.Rule
 
-class FirstFollow (public val SyntaxProvided: Syntax)
+/**This class represents a pair of first nad follow sets, built after a grammar to create parsing table
+*/
+class FirstFollow (public val SyntaxProvided: AbstractSyntax)
 {
     private var _first: HashMap<Symbol, HashSet<Terminal>> = HashMap<Symbol, HashSet<Terminal>>();
     private var _follow: HashMap<NonTerminal, HashSet<Terminal>> = HashMap<NonTerminal, HashSet<Terminal>>();
@@ -175,7 +178,7 @@ class FirstFollow (public val SyntaxProvided: Syntax)
     private fun _producesEpsilon(sym: NonTerminal): Boolean
     {
         return SyntaxProvided.Rules.containsKey(sym) &&
-        SyntaxProvided.Rules[sym]!!.any { rule ->
+        SyntaxProvided.Rules[sym]!!.any {(rule: Rule) ->
             rule.size == 1 &&
             rule[0] == TermEpsilon.Instance
         }
@@ -186,7 +189,7 @@ class FirstFollow (public val SyntaxProvided: Syntax)
                                           currentFirsts: HashMap<Symbol, HashSet<Terminal>>): Boolean
     {
         if (!SyntaxProvided.Rules.containsKey(nt)) return false
-        return SyntaxProvided.Rules[nt]!!.any { rule ->
+        return SyntaxProvided.Rules[nt]!!.any {(rule: Rule)->
             rule.all { sym ->
                 currentFirsts[sym]!!.contains(TermEpsilon.Instance)
             }

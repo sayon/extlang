@@ -9,38 +9,71 @@ import com.extlang.engine.parser.ELASTNode
 import com.intellij.psi.PsiManager
 import com.intellij.psi.util.PsiTreeUtil
 import java.util.ArrayList
-import com.extlang.engine.TokIdentifier
+import com.extlang.engine.model.TokIdentifier
+import com.intellij.lang.ASTNode
+import com.extlang.engine.model.ELToken
 
 
 class Util
 {
+
     class object {
-        public fun  findIdentifiers(project: Project, key: String? = null): List<ELASTNode>
+        public fun CollectDescendants(root: ASTNode, pred: (ASTNode)-> Boolean): List<ASTNode>
         {
-            val result = ArrayList<ELASTNode>()
+            fun walkTree(n: ASTNode, condition: (ASTNode)-> Boolean, accumulator: ArrayList<ASTNode>): ArrayList<ASTNode>
+            {
+                if ( condition.invoke(n) ) {
+                    accumulator.add(n)
+                }
+                for (c in n.getChildren(null)!!)
+                {
+                    walkTree(c, condition, accumulator)
+                }
+                return accumulator
+            }
+            val acc = ArrayList<ASTNode>()
+            walkTree  (root, pred, acc)
+
+            return acc
+        }
+
+        public fun  findIdentifiers(project: Project, key: String? = null): List<ASTNode>
+        {
+            val result = ArrayList<ASTNode>()
             val virtualFiles = FileBasedIndex.getInstance()!!
                     .getContainingFiles(
                     FileTypeIndex.NAME,
                     ELCodeFileType.INSTANCE,
                     GlobalSearchScope.allScope(project))
+
+            for (virtualFile in virtualFiles)
+            {
+                val file = PsiManager.getInstance(project).findFile(virtualFile)
+                if (file != null)
+                    if (key != null)
+                    {
+                        val token = ELToken.fromIdentifier(key)
+                        result.addAll(Util.CollectDescendants(file.getNode(), {(node)-> node.getElementType() == token }))
+                    }
+                    else
+                    {
+                        result.addAll(Util.CollectDescendants(file.getNode(), {(node)-> node.getElementType() is TokIdentifier }))
+                    }
+            }
+            /*
             for (virtualFile in virtualFiles) {
                 val file = PsiManager.getInstance(project).findFile(virtualFile)
                 if (file != null)
                 {
-                    val identifiers = PsiTreeUtil.getChildrenOfType(file, javaClass<ELASTNode>())
-                    if (identifiers != null)
-                    {
-                        for (identifier in identifiers)
-                        {
-                            System.err.println("Comparing key $key with identifier's name ${identifier.getName()}")
-                            val tok = identifier.getNode().getElementType()
-                            if (tok is TokIdentifier && (key == null || tok.Name == key))
-                                result.add(identifier)
-
-                        }
-                    }
+                    val identifiers = CollectDescendants(file.getNode(), {(node) ->
+                        node.getChildren(null)!!.size == 1 &&
+                        node.getFirstChildNode()!!.getElementType() is TokIdentifier &&
+                        ( key == null || ((node.getFirstChildNode()!!.getElementType()) as TokIdentifier).Name == key)
+                    })
+                    result.addAll(identifiers)
                 }
-            }
+            }                   */
+
             return result
         }
 

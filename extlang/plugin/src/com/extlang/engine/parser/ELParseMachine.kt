@@ -21,11 +21,18 @@ import com.extlang.parser.ELParserDefinition
 import java.util.HashMap
 import com.extlang.engine.parser.machine.Instruction
 import com.extlang.engine.parser.machine.Program
+import com.extlang.engine.model.ELToken
+import com.extlang.engine.model.TokIdentifier
+import com.extlang.engine.model.Rule
 
-
+/*
+This classs is used to parse programs written on extensible language.
+It can generate programs for the interpreting parser and execute them
+**/
 class ELParseMachine(public val ParseTable: GrammarTable)
 {
 
+    // This is a stack entry storing symbols or end markers
     private abstract class Entry()
     {
         class MarkerHolder(public val Mark: Marker?, public val TokenType: ELToken): Entry ()
@@ -36,7 +43,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
             }
             public fun toString(): String
             {
-                return "Marker ${TokenType.Term}"
+                return "Marker ${TokenType.Sym}"
             }
         }
         class SymbolHolder(public val Sym: Symbol, public val AliasedName: String? = null): Entry ()
@@ -55,6 +62,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
         }
     }
 
+    //Stack used in parsing algorithm
     inner class ParsingStack: Stack<Entry>()
     {
         public fun pushSymbol(s: Symbol)
@@ -63,21 +71,13 @@ class ELParseMachine(public val ParseTable: GrammarTable)
         }
         public fun pushRule(rule: Rule)
         {
-            val trans = ParseTable.SyntaxProvided.Transformations!!
             if (rule.isExtension)
-            {
-                val aliases = trans.AliasesToIdx[rule]!!
-                val idxs = trans.IdxToAliases[rule]!!
                 for (i in (rule.size - 1) downTo 0)
-                {
-                    if (rule[i] == TermEpsilon.Instance) continue;
-                    push(Entry.SymbolHolder(rule[i], rule.getAliasName(i)))
-                }
-            }
-            else
-                for (elem  in rule.reverse().filter { s -> s != TermEpsilon.Instance }) {
-                    push(Entry.SymbolHolder(elem))
-                }
+                    if (rule[i] != TermEpsilon.Instance)
+                        push(Entry.SymbolHolder(rule[i], rule.getAliasName(i)))
+                    else
+                        for (elem  in rule.reverse().filter { s -> s != TermEpsilon.Instance })
+                            push(Entry.SymbolHolder(elem))
         }
         public fun pushMarker(marker: Marker?, symbol: NonTerminal): Entry =
                 push(Entry.MarkerHolder(marker, ELToken.fromNonTerminal(symbol)))!!
@@ -91,6 +91,8 @@ class ELParseMachine(public val ParseTable: GrammarTable)
         }
     }
 
+    /** Generates program to parse the whole file
+    */
     public fun parse(root: IElementType?, builder: PsiBuilder?): ASTNode
     {
         val m = builder!!.mark()!!
@@ -105,10 +107,13 @@ class ELParseMachine(public val ParseTable: GrammarTable)
         return builder.getTreeBuilt()!!
     }
 
-
+    /**Makes builder execute program in environment, defining how different programs are named.
+    If phantomtree is true, the tree built will consume no tokens.*/
+    //todo We can easily substitute environement for Stack<MutableMap> and store contextes.
+    //todo This way we will guarantee correctness when using extensions inside extensions.
     public fun executeProgram(program: Program,
                               builder: PsiBuilder,
-                              environement: MutableMap<String, Program>,
+                              environment: MutableMap<String, Program>,
                               phantomTree: Boolean)
     {
         var phantomTreeSwitch = phantomTree
@@ -123,20 +128,19 @@ class ELParseMachine(public val ParseTable: GrammarTable)
             when (instr)
             {
                 is Instruction.TerminalNode ->
+                    // I wanted to use an inner function for that, but when I tried, Kotlin crashed, so...
+                if (phantomTreeSwitch)
+                {
+                    if (instr.Term == TermIdent.Instance)
                     {
-                        // I wanted to use an inner function for that, but Kotlin crashed, so...
-                        if (phantomTreeSwitch)
-                        {
-                            if (instr.Term == TermIdent.Instance)
-                            {
-                                val tok = ELToken.fromIdentifier(instr.Name)
-                                builder.mark()!!.done(tok)
-                            }
-                            else builder.mark()!!.done(ELToken.fromTerminal(instr.Term))
-                        }
-                        else
-                            builder.advanceLexer()
+                        val tok = ELToken.fromIdentifier(instr.Name)
+                        builder.mark()!!.done(tok)
                     }
+                    else builder.mark()!!.done(ELToken.fromTerminal(instr.Term))
+                }
+                else
+                    builder.advanceLexer()
+
                 is Instruction.PhantomOn ->
                     phantomTreeSwitch = true
                 is Instruction.PhantomOff ->
@@ -146,9 +150,9 @@ class ELParseMachine(public val ParseTable: GrammarTable)
                 is Instruction.NonTerminalNodeClose ->
                     builder.nonTerminalNodeClose()
                 is Instruction.InsertTree ->
-                    executeProgram(environement[instr.AliasName]!!, builder, environement, instr.isPhantom)
+                    executeProgram(environment[instr.AliasName]!!, builder, environment, instr.isPhantom)
                 is Instruction.StoreNonTerminal ->
-                    environement.put(instr.AliasName, generateProgram(instr.NonTerm, builder))
+                    environment.put(instr.AliasName, generateProgram(instr.NonTerm, builder))
 
                 else ->
                     throw UnsupportedOperationException("instruction ${instr.toString()} is not yet supported")
@@ -156,7 +160,8 @@ class ELParseMachine(public val ParseTable: GrammarTable)
             }
     }
 
-
+   /**Generates program to parse NonTerminal nt with PsiBuilder builder
+   */
     public fun generateProgram(nt: NonTerminal, builder: PsiBuilder): Program? {
         val program = Program()
         val stack = ParsingStack()
@@ -179,7 +184,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
         fun applyRule(builder: PsiBuilder, ctoken: ELToken): Boolean
         {
             val sym = (stack.peek() as Entry.SymbolHolder).Sym
-            val key = Pair(sym, ctoken.Term)
+            val key = Pair(sym, ctoken.Sym)
             if (!ParseTable.Table.containsKey(key))
             {
                 System.err.println("No rule for ${key}")
@@ -233,10 +238,10 @@ class ELParseMachine(public val ParseTable: GrammarTable)
                         if (top is Entry.SymbolHolder)
                             when  (top.Sym)
                             {
-                                ctoken.Term -> {
+                                ctoken.Sym -> {
 
                                     val name = if (ctoken is TokIdentifier) ctoken.Name else null
-                                    program.add(Instruction.TerminalNode(ctoken.Term, name));
+                                    program.add(Instruction.TerminalNode(ctoken.Sym, name));
 
                                     stack.pop();
                                     advance()

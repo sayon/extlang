@@ -17,6 +17,7 @@ import com.extlang.grammar.BNFLanguage
 import com.extlang.grammar.psi.BNFSimpleTypes
 import com.extlang.engine.model.ExtendedSyntax
 
+/**This action should be invoked when we */
 public open class GrammarAction(): AnAction() {
     public override fun actionPerformed(e: AnActionEvent?): Unit {
         var file: PsiFile? = e?.getData(LangDataKeys.PSI_FILE)
@@ -28,12 +29,12 @@ public open class GrammarAction(): AnAction() {
         {
             System.err.println("Building grammar from file ${file!!.getName()}")
             val grammarBuilder = GrammarBuilder(file?.getNode())
-            ExtendedSyntax.Instance = grammarBuilder.SyntaxBuilt
-            ExtendedSyntax.Instance.Transformations = grammarBuilder.Transforms
-            GrammarTable.Instance = GrammarTable(ExtendedSyntax.Instance)
+            ExtendedSyntax.Instance = grammarBuilder.ParsingTable.SyntaxProvided
 
-            System.err.println(ExtendedSyntax.Instance.representation())
+            GrammarTable.Instance = GrammarTable(ExtendedSyntax.Instance)
             System.err.println(GrammarTable.Instance!!.representation())
+            //    System.err.println(ExtendedSyntax.Instance.representation())
+            //    System.err.println(GrammarTable.Instance!!.representation())
 
         }
     }

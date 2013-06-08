@@ -1,12 +1,15 @@
 package com.extlang.engine.model
 
 import com.extlang.engine.FixedSyntax
-import com.extlang.engine.TreeTransformations
 
 
+/** This syntax can be extended. Transformations define the special tree building rules that correspond to certain
+* grammar rules.
+*/
 public class  ExtendedSyntax: FixedSyntax()
 {
-    public var Transformations: TreeTransformations? = null
+    public val Transformations: TreeTransformations =  TreeTransformations()
+
     class object {
         public var Instance: ExtendedSyntax = ExtendedSyntax()
     }

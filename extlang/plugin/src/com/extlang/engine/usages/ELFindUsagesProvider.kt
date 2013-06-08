@@ -6,29 +6,50 @@ import com.intellij.psi.PsiElement
 import com.intellij.lang.cacheBuilder.DefaultWordsScanner
 import com.intellij.psi.tree.TokenSet
 import com.extlang.ELLexer
-import com.extlang.engine.ELToken
+import com.extlang.engine.model.ELToken
 import com.extlang.engine.model.ExtendedSyntax
 import com.extlang.parser.ELParserDefinition
 import com.extlang.engine.TermNumber
 import com.extlang.engine.TermIdent
 import com.extlang.engine.parser.ELASTNode
-import com.extlang.engine.TokIdentifier
+import com.extlang.engine.model.TokIdentifier
+import com.extlang.engine.model.ELToken
+import com.intellij.lang.cacheBuilder.WordOccurrence
+import com.intellij.util.Processor
+
+import com.intellij.psi.tree.IElementType
+import com.intellij.lexer.Lexer
 
 
+public class ELWordsScanner(public val Lex: Lexer): WordsScanner
+{
+    public override fun processWords(fileText: CharSequence?, processor: Processor<WordOccurrence>?) {
+        Lex.start(fileText)
+        var token: IElementType? = null
+        do {
+
+            token = Lex.getTokenType()
+            when (token)
+            {
+                is TokIdentifier -> processor!!.process(WordOccurrence(fileText, Lex.getTokenStart(), Lex.getTokenEnd(), WordOccurrence.Kind.CODE))
+                else -> {}
+            }
+            Lex.advance()
+        }
+        while( token != null)
+    }
+
+}
 public class ELFindUsagesProvider: FindUsagesProvider{
 
 
     public override fun getWordsScanner(): WordsScanner? {
-        val lexer = ELLexer()
-        val identifiers = ELToken.AllIdentifiers()
-        val comments = TokenSet.EMPTY
-        val literals = TokenSet.create(ELToken.fromTerminal(TermNumber.Instance))
-        return DefaultWordsScanner(lexer, identifiers, comments, literals)
+      return ELWordsScanner(ELLexer())
     }
     public override fun canFindUsagesFor(psiElement: PsiElement): Boolean {
-        val token = psiElement.getNode()!!.getElementType()
-        return  token is TokIdentifier
-
+        //val identifiersChildren = psiElement.getNode()!!.getChildren(ELToken.AllIdentifiers())!!
+        val ability = psiElement.getNode()!!.getFirstChildNode()!!.getElementType() is TokIdentifier
+        return ability
     }
     public override fun getHelpId(psiElement: PsiElement): String? =
             null
@@ -36,16 +57,17 @@ public class ELFindUsagesProvider: FindUsagesProvider{
     public override fun getType(element: PsiElement): String {
         val token = element.getNode()?.getElementType()
         if (token is ELToken )
-            return token.Term.Name
+            return token.Sym.Name
         return "UnknownType"
     }
-    public override fun getDescriptiveName(element: PsiElement): String =
-            "Description"  //descriptions can be supplied through grammar as well, can't they?
+    public override fun getDescriptiveName(element: PsiElement): String {
 
+         return   "Element with name ${getNodeText(element, true)}"  //descriptions can be supplied through grammar as well, can't they?
+    }
     public override fun getNodeText(element: PsiElement, useFullName: Boolean): String {
-        val token = element.getNode()?.getElementType()
-        if (token is ELToken )
-            return "${element.getText()}<::${token.Term.Name}"
+        val token = element.getNode()!!.getFirstChildNode()!!.getElementType()
+        if (token is TokIdentifier )
+            return token.Name
         return element.getText()!!
     }
 }
