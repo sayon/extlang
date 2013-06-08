@@ -1,4 +1,4 @@
-package com.extlang.engine
+package com.extlang.engine.model
 
 import com.intellij.psi.tree.IElementType
 import java.util.HashMap
@@ -8,28 +8,50 @@ import com.intellij.extapi.psi.ASTWrapperPsiElement
 import com.intellij.codeInsight.daemon.impl.quickfix.AddNewArrayExpressionFix
 import com.sun.javaws.exceptions.InvalidArgumentException
 import com.intellij.psi.tree.TokenSet
+import com.extlang.engine.Symbol
+import com.extlang.engine.ELLanguage
+import com.extlang.engine.NonTerminal
+import com.extlang.engine.Terminal
+import com.extlang.engine.TermIdent
+import com.extlang.engine.TermEndOfFile
 
+/**Extensible language token type
+Always contains a non-terminal or a terminal inside.
+There exist instance caches (as maps) for
+- Identifiers (each identifier has his own TokIdentifier:ELToken instance
+- Terminal tokens
+- Nonterminal tokens
 
-open class ELToken(public val Term: Symbol): IElementType(Term.Name, ELLanguage.INSTANCE)
+Identifiers cache exists also as a TokenSet instance and contains all present and past identifiers
+
+Ctor clears caches
+
+*/
+open class ELToken(public val Sym: Symbol): IElementType(Sym.Name, ELLanguage.INSTANCE)
 {
     public val isNonTerminal: Boolean
 
     {
-        if (Term is NonTerminal) isNonTerminal = true
+        if (Sym is NonTerminal) isNonTerminal = true
         else isNonTerminal = false
     }
 
     class object {
-        //todo do we really need this one? We can use 'is TokIdentifier'
         public fun AllIdentifiers(): TokenSet
         {
             return _allIdentifiers
         }
 
+        // Only identifiers cache. Can grow big, and is a potential bottleneck.
+        //todo : Maybe we should clear it from time to time
         var _allIdentifiers: TokenSet = TokenSet.EMPTY
 
+        //terminals cache
         val _existingTerminalTokens: HashMap<Terminal, ELToken> = HashMap<Terminal, ELToken>() ;
+        //nonterminals cache
         val _existingNonTerminalTokens: HashMap<NonTerminal, ELToken> = HashMap<NonTerminal, ELToken>() ;
+        //identifier tokens cache. F.e. if there exists identifier named 'x', it will have a TokIdentifier instance
+        //in this cache and lexer will use it whenever it sees this identifier.
         val _existingIdentifierTokens: HashMap<String, TokIdentifier> = HashMap<String, TokIdentifier>() ;
 
         //ctor
@@ -42,8 +64,6 @@ open class ELToken(public val Term: Symbol): IElementType(Term.Name, ELLanguage.
             _existingNonTerminalTokens.clear()
             _existingIdentifierTokens.clear()
             _allIdentifiers = TokenSet.EMPTY
-            // for( kvp in ExtendedSyntax.Instance.Terminals)
-            //     addTerm(kvp.getValue())
         }
 
         public fun fromTerminal(t: Terminal): ELToken
@@ -69,6 +89,7 @@ open class ELToken(public val Term: Symbol): IElementType(Term.Name, ELLanguage.
             {
                 val newentry = TokIdentifier(name)
                 _existingIdentifierTokens.put(name, newentry)
+                _allIdentifiers = TokenSet.orSet(_allIdentifiers, TokenSet.create(newentry))
                 return newentry
             }
             return res
@@ -81,27 +102,24 @@ open class ELToken(public val Term: Symbol): IElementType(Term.Name, ELLanguage.
             {
                 val newentry = ELToken(nt)
                 _existingNonTerminalTokens.put(nt, newentry)
-
-                _allIdentifiers = TokenSet.orSet(_allIdentifiers, TokenSet.create(newentry))
                 return newentry
             }
             else return res
         }
 
-        private fun addTerm(t: Terminal) {
+        private fun addTermToken(t: Terminal) {
             _existingTerminalTokens.put(t, ELToken(t))
-
         }
     }
 
     public override fun toString(): String =
-            "[${Term.Name}]"
+            "[${Sym.Name}]"
 }
 
 public class TokIdentifier(public val Name: String): ELToken(TermIdent.Instance)
 {
     public override fun toString(): String =
-            "[${Term.Name}:$Name]"
+            "[${Sym.Name}:$Name]"
 }
 public class EndOfStream: ELToken(TermEndOfFile.Instance)
 {

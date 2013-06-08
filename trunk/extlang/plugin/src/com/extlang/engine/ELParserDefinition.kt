@@ -22,9 +22,9 @@ import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 import com.extlang.engine.ELParser
 import com.extlang.engine.parser.ELASTNode
-import com.extlang.engine.ELToken
+import com.extlang.engine.model.ELToken
 import com.extlang.engine.TermIdent
-
+import com.extlang.engine.model.TokIdentifier
 class ELParserDefinition: ParserDefinition
 {
     class object {

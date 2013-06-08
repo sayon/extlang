@@ -6,59 +6,45 @@ import com.intellij.psi.impl.source.tree.TreeElement
 import com.intellij.psi.tree.TokenSet
 import java.util.ArrayList
 import java.util.HashMap
+import com.extlang.engine.model.ELToken
 import com.extlang.engine.model.ExtendedSyntax
+import com.extlang.engine.model.TreeTransformations
+import com.intellij.openapi.diagnostic.Logger
+import com.extlang.engine.model.Rule
 
-val TIdentifierTokenSet = TokenSet.create(BNFSimpleTypes.TIDENTIFIER);
-val NTIdentifierTokenSet = TokenSet.create(BNFSimpleTypes.NTIDENTIFIER);
-val NodeContentTokenSet = TokenSet.create(BNFSimpleTypes.NODECONTENT)
-val QuotedTreeTokenSet = TokenSet.create(BNFSimpleTypes.QUOTEDTREE)
-val AliasTokenSet = TokenSet.create(BNFSimpleTypes.ALIAS)
-val LHSTokenSet = TokenSet.create(BNFSimpleTypes.LEFTHANDSIDE)
-val RHSTokenSet = TokenSet.create(BNFSimpleTypes.RIGHTHANDSIDE)
-val TReprTokenSet = TokenSet.create(BNFSimpleTypes.TREPR)
+private val TIdentifierTokenSet = TokenSet.create(BNFSimpleTypes.TIDENTIFIER);
+private val NTIdentifierTokenSet = TokenSet.create(BNFSimpleTypes.NTIDENTIFIER);
+private val NodeContentTokenSet = TokenSet.create(BNFSimpleTypes.NODECONTENT)
+private val QuotedTreeTokenSet = TokenSet.create(BNFSimpleTypes.QUOTEDTREE)
+private val AliasTokenSet = TokenSet.create(BNFSimpleTypes.ALIAS)
+private val LHSTokenSet = TokenSet.create(BNFSimpleTypes.LEFTHANDSIDE)
+private val RHSTokenSet = TokenSet.create(BNFSimpleTypes.RIGHTHANDSIDE)
+private val TReprTokenSet = TokenSet.create(BNFSimpleTypes.TREPR)
 
 
 
-public class TreeTransformations
-{
-    public val QTrees: HashMap<Rule, QTree> = HashMap<Rule, QTree>()
-    public val AliasesToIdx: HashMap<
-            Rule,
-            HashMap<String, Int>
-            > = HashMap<Rule, HashMap<String, Int>>()
-    public val IdxToAliases: HashMap<
-            Rule,
-            HashMap<Int, String>
-            > = HashMap<Rule, HashMap<Int, String>>()
-    public fun addAlias(rule: Rule, idx: Int, alias: String)
-    {
-        if (!AliasesToIdx.containsKey(rule))
-            AliasesToIdx.put(rule, HashMap<String, Int>())
-        if (!IdxToAliases.containsKey(rule))
-            IdxToAliases.put(rule, HashMap<Int, String>())
 
-        AliasesToIdx[rule]!!.put(alias, idx)
-        IdxToAliases[rule]!!.put(idx, alias)
-        rule.setAlias(idx, alias)
-    }
 
-}
+/* This class is used to crawl through grammar definition's parsed tree.
+It builds syntax, tree transformations,  and parsing table after them.
+*/
 public class GrammarBuilder(tree: TreeElement) {
-    public val SyntaxBuilt: ExtendedSyntax ;
-    public val Transforms: TreeTransformations ;
+    private val logger: Logger = Logger.getInstance("GrammarBuilder")!!
+    //public val SyntaxBuilt: ExtendedSyntax ;
+    //public val Transforms: TreeTransformations ;
     public val ParsingTable: GrammarTable;
 
     {
-        SyntaxBuilt = ExtendedSyntax ()
-        Transforms = TreeTransformations()
+        val  SyntaxBuilt = ExtendedSyntax ()
         fillSyntax(SyntaxBuilt, tree)
         ELToken.reinitializeTokens()
         ParsingTable = GrammarTable(SyntaxBuilt)
-        SyntaxBuilt.Transformations = Transforms
+        logger.info("Grammar file loaded")
     }
 
 
-    private fun fillSyntax(syntax: FixedSyntax, node: TreeElement)
+    //Fills syntax (and transformations)
+    private fun fillSyntax(syntax: ExtendedSyntax, node: TreeElement)
     {
         val nodeName = node.getElementType().toString()
         when  (nodeName)
@@ -95,7 +81,7 @@ public class GrammarBuilder(tree: TreeElement) {
         for(elem in nonTerminalsDescriptionNode.getChildren(NTIdentifierTokenSet)!!)
             syntax.addNonTerminalByName(elem.getText())
     }
-    private fun addRule(syntax: FixedSyntax, ruleNode: TreeElement)
+    private fun addRule(syntax: ExtendedSyntax, ruleNode: TreeElement)
     {
         val lhs = ruleNode.getChildren(LHSTokenSet)!![0].getText()!!
         val rhs = ruleNode.getChildren(RHSTokenSet)!![0].getChildren(null)!!
@@ -108,6 +94,7 @@ public class GrammarBuilder(tree: TreeElement) {
             if ( BNFParserDefinition.TOKENS_WHITE_SPACE.contains(elem.getElementType())) continue
 
             idx++
+
             val tidentOrDescr = elem.getChildren(null)!![0]
             val tidentOrDescrName = tidentOrDescr.getElementType().toString()
             when (tidentOrDescrName)
@@ -115,7 +102,8 @@ public class GrammarBuilder(tree: TreeElement) {
                 "TIDENTIFIER" ->
                     {
                         val symb = syntax.symbolByName(tidentOrDescr.getText())
-                        if (symb == null) System.err.println("Can't find terminal with the name of ${tidentOrDescr.getText()}")
+                        if (symb == null )
+                            logger.error("Can't find terminal with the name of ${tidentOrDescr.getText()}")
                         else rhsPrepared.add(symb)
                     }
                 "NTTERMINALORALIASED" ->
@@ -124,10 +112,9 @@ public class GrammarBuilder(tree: TreeElement) {
                         if (symb == null)
                             System.err.println("Can't find terminal with the name of ${tidentOrDescr.getText()}")
                         else {
-
                             val aliasarr = tidentOrDescr.getChildren(AliasTokenSet)!!
                             if (!aliasarr.isEmpty())
-                                Transforms.addAlias(rhsPrepared, idx, aliasarr[0].getText())
+                                syntax.Transformations.addAlias(rhsPrepared, idx, aliasarr[0].getText())
                             rhsPrepared.add(symb)
                         }
                     }
@@ -138,14 +125,16 @@ public class GrammarBuilder(tree: TreeElement) {
         }
         syntax.addRule(syntax.symbolByName(lhs), rhsPrepared)
         if (isExtension)
-            addTree(quotedTreeNodeArr[0] as TreeElement, rhsPrepared)
+            addTree(quotedTreeNodeArr[0] as TreeElement, rhsPrepared, syntax)
     }
 
-    private fun addTree(node: TreeElement, rule: Rule)
+    private fun addTree(node: TreeElement, rule: Rule, syntax: ExtendedSyntax)
     {
-        Transforms.QTrees.put(rule, QTree(buildTreeRecursive(node)))
+        syntax.Transformations.QTrees.put(rule, QTree(buildTreeRecursive(node, syntax)))
     }
-    private fun buildTreeRecursive(node: TreeElement): QTreeNode
+
+    //Recursively build tree building rule for a grammar rule
+    private fun buildTreeRecursive(node: TreeElement, syntax: ExtendedSyntax): QTreeNode
     {
         val contents = node.getChildren(NodeContentTokenSet)!!
         val content = contents[0].getChildren(null)!![0]
@@ -157,10 +146,10 @@ public class GrammarBuilder(tree: TreeElement) {
                         QTreeRefNode(content.getText())
                     }
                     "NTIDENTIFIER" -> {
-                        QTreeNonTermNode(SyntaxBuilt.symbolByName(content.getText()))
+                        QTreeNonTermNode(syntax.symbolByName(content.getText()))
                     }
                     "TIDENTIFIER" -> {
-                        QTreeTermNode(SyntaxBuilt.symbolByName(content.getText()))
+                        QTreeTermNode(syntax.symbolByName(content.getText()))
                     }
                     else -> {
                         throw UnsupportedOperationException(
@@ -170,7 +159,7 @@ public class GrammarBuilder(tree: TreeElement) {
 
         if (tree is QTreeNonTermNode)
             for (child in children)
-                tree.Children.add(buildTreeRecursive(child as TreeElement))
+                tree.Children.add(buildTreeRecursive(child as TreeElement, syntax))
 
         return tree
     }

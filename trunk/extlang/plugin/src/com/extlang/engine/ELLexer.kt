@@ -1,6 +1,6 @@
 package com.extlang
 
-import com.extlang.engine.ELToken
+import com.extlang.engine.model.ELToken
 import com.extlang.engine.FixedSyntax
 import com.extlang.engine.TermIdent
 import com.extlang.engine.TermNumber

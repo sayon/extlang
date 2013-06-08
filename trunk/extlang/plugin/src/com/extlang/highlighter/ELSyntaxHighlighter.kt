@@ -12,8 +12,8 @@ import com.intellij.psi.tree.IElementType
 import java.awt.*
 import java.io.Reader
 import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey
-import com.extlang.engine.ELToken
-import com.extlang.engine.TokIdentifier
+import com.extlang.engine.model.ELToken
+import com.extlang.engine.model.TokIdentifier
 import com.extlang.engine.TermNumber
 import com.extlang.engine.TermIdent
 import com.intellij.openapi.editor.markup.EffectType
@@ -26,7 +26,7 @@ public open class ELSyntaxHighlighter(): SyntaxHighlighterBase() {
 
         if (tokenType is ELToken)
         {
-            return when  (tokenType.Term)
+            return when  (tokenType.Sym)
             {
                 TermIdent.Instance -> IDENTIFIER_KEYS
                 TermNumber.Instance -> NUMBER_KEYS

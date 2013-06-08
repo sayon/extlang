@@ -29,6 +29,9 @@ public fun CharSequence.containsElement (value: Char): Boolean {
     return product
 }
 
+public fun <T> AlwaysTrue (p0 :T) : Boolean  = true
+public fun <T> AlwaysFalse (p0 :T) : Boolean  = false
+
 fun <T> Iterable<T>.cartesianSquare() = this.cartesian(this)
 
 class PairList <T, U>  : ArrayList<Pair<T,U>>()

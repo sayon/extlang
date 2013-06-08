@@ -1,4 +1,5 @@
 package com.extlang.engine
+import com.extlang.engine.model.ELToken
 
 abstract class Symbol(public val Name: String)
 {
@@ -8,11 +9,11 @@ abstract class Symbol(public val Name: String)
 class NonTerminal(name: String): Symbol(name)
 
 open class Terminal(name: String): Symbol(name)
-{
+{         /*
     public fun equal(other: ELToken) : Boolean
     {
         return other.Term == this
-    }
+    }                       */
 }
 
 

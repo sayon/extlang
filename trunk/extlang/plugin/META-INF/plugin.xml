@@ -30,10 +30,11 @@ Initial release
         <lang.parserDefinition language="BNF" implementationClass="com.extlang.parser.BNFParserDefinition"/>
 
         <psi.referenceContributor language="EL" implementation="com.extlang.engine.usages.ELReferenceContributor"/>
+
         <lang.findUsagesProvider language="EL" implementationClass="com.extlang.engine.usages.ELFindUsagesProvider"/>
 
         <lang.syntaxHighlighterFactory key="EL" implementationClass="com.extlang.highlighter.ELSyntaxHightlighterFactory"/>
-
+         <annotator language="EL" implementationClass="com.extlang.annotator.ELAnnotator"/>
 
     </extensions>
 </idea-plugin>
