@@ -60,21 +60,8 @@ class Util
                         result.addAll(Util.CollectDescendants(file.getNode(), {(node)-> node.getElementType() is TokIdentifier }))
                     }
             }
-            /*
-            for (virtualFile in virtualFiles) {
-                val file = PsiManager.getInstance(project).findFile(virtualFile)
-                if (file != null)
-                {
-                    val identifiers = CollectDescendants(file.getNode(), {(node) ->
-                        node.getChildren(null)!!.size == 1 &&
-                        node.getFirstChildNode()!!.getElementType() is TokIdentifier &&
-                        ( key == null || ((node.getFirstChildNode()!!.getElementType()) as TokIdentifier).Name == key)
-                    })
-                    result.addAll(identifiers)
-                }
-            }                   */
 
-            return result.map { (node) -> node.getTreeParent()!!}
+            return result
         }
 
 
