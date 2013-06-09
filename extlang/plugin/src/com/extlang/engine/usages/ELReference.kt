@@ -18,29 +18,18 @@ import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.extlang.Icons
 
 public class ELReference(element: PsiElement, textRange: TextRange):
-PsiReferenceBase<PsiElement>(element, textRange),
-PsiPolyVariantReference
+PsiReferenceBase<PsiElement>(element, textRange)
 {
-    public override fun multiResolve(incompleteCode: Boolean): Array<ResolveResult> {
-        val project = myElement!!.getProject()
-        val tok = myElement!!.getNode()!!.getFirstChildNode()!!.getElementType()!!
-        if (tok is TokIdentifier)
-        {
-            val key = tok.Name
-            val idents = Util.findIdentifiers(project, key)
-            val result = Array<ResolveResult>(idents.size,
-                    {(i) -> com.intellij.psi.PsiElementResolveResult(idents.get(i).getPsi()!!, true) })
-            return result
-        }
-        else return array()
-    }
-
     public override fun resolve(): PsiElement? {
-        val resolveResults = multiResolve(false);
-        return if (resolveResults.size >= 1) resolveResults[0].getElement() else null
+        val project = myElement!!.getProject()
+        val key = (myElement?.getFirstChild()?.getNode()!!.getElementType() as TokIdentifier).Name
+        val idents = Util.findIdentifiers(project, key)
+        if (idents.size == 0) return null
+        val result = idents[0].getPsi()!!.getFirstChild();
+        return result
     }
     public override fun getVariants(): Array<Any> {
-        val project = myElement!!.getProject()
+       /* val project = myElement!!.getProject()
         val identifiers = Util.findIdentifiers(project)
         val variants = ArrayList<Any>()
         for( id in identifiers)
@@ -54,88 +43,27 @@ PsiPolyVariantReference
                 )
             }
         }
-        return variants.toArray() as Array<Any>
+        return variants.toArray() as Array<Any>         */
+
+        val project = myElement!!.getProject()
+        val identifiers = Util.findIdentifiers(project)
+        val variants = Array<Any>(identifiers.size, {(i) -> (identifiers.get(i) as ELASTNode ).getName() as Any} )
+        return variants
     }
+    /*public fun isReferenceTo(other:PsiElement) : Boolean
+    {
+        val tok = other.getNode()!!.getElementType()
+        if (tok is TokIdentifier)
+            {
+                return tok.Name == key
+            }
+        val tokchild = other.getNode()!!.getFirstChildNode()?.getElementType()
+        if( tokchild != null && tokchild is TokIdentifier)
+            {
+                return tokchild.Name == key
+            }
 
-
+        return false
+    }
+                     */
 }
-/*public Object[] getVariants() {
-     Project project = myElement.getProject();
-     List<SimpleProperty> properties = SimpleUtil.findProperties(project);
-     List<LookupElement> variants = new ArrayList<LookupElement>();
-     for (final SimpleProperty property : properties) {
-         if (property.getKey() != null && property.getKey().length() > 0) {
-             variants.add(LookupElementBuilder.create(property).
-                     withIcon(SimpleIcons.FILE).
-                     withTypeText(property.getContainingFile().getName())
-             );
-         }
-     }
-     return variants.toArray();
- }*/
-
-
-
-/*
-/* private var k: String = "";
-
- {
-     val x = 1
-     val toktype = element.getNode()!!.getElementType()
-     val text = element.getText()!!
-    /* key = if (toktype is TokIdentifier)
-         toktype.Name
-     else
-         element.getText()!!.substring(textRange.getStartOffset(), textRange.getEndOffset());*/
-     if (toktype is TokIdentifier)
-         k = toktype.Name
-     else
-         k = element.getText()!!
- }
-
- public override fun multiResolve(incompleteCode: Boolean): Array<ResolveResult> {
-     val project = myElement!!.getProject()
-     val idents = Util.findIdentifiers(project, k)
-     val results = ArrayList<ResolveResult>()
-     var result: Array<ResolveResult> = array()
-     idents.map { i-> PsiElementResolveResult(i) }.toArray<ResolveResult>(result)
-     return result
- }
- public override fun resolve(): PsiElement? {
-     val resolveResults = multiResolve(false);
-     return if (resolveResults.size == 1) resolveResults[0].getElement() else null
- }
- public override fun getVariants(): Array<Any> {
-     val project = myElement!!.getProject()
-     val identifiers = Util.findIdentifiers(project)
-     val variants = ArrayList<Any>()
-     for( ident in identifiers)
-         if (ident.Name != null && ident.Name!!.length()>0)
-             {
-                 variants.add(LookupElementBuilder.create(ident)!!
-                         .withIcon(Icons.CODEFILE)!!
-                         .withTypeText(ident.getContainingFile()!!.getName()) as Any
-                 )
-             }
-     return variants.toArray() as Array<Any>
- }
-
-
-}
-/*public Object[] getVariants() {
-     Project project = myElement.getProject();
-     List<SimpleProperty> properties = SimpleUtil.findProperties(project);
-     List<LookupElement> variants = new ArrayList<LookupElement>();
-     for (final SimpleProperty property : properties) {
-         if (property.getKey() != null && property.getKey().length() > 0) {
-             variants.add(LookupElementBuilder.create(property).
-                     withIcon(SimpleIcons.FILE).
-                     withTypeText(property.getContainingFile().getName())
-             );
-         }
-     }
-     return variants.toArray();
- }*/
-
-
-       }*/

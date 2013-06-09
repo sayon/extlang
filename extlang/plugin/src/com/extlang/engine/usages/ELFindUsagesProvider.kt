@@ -44,12 +44,14 @@ public class ELFindUsagesProvider: FindUsagesProvider{
 
 
     public override fun getWordsScanner(): WordsScanner? {
-      return ELWordsScanner(ELLexer())
+      //return ELWordsScanner(ELLexer())
+
+        return DefaultWordsScanner(ELLexer(), ELToken.AllIdentifiers(), TokenSet.EMPTY, TokenSet.EMPTY)
     }
     public override fun canFindUsagesFor(psiElement: PsiElement): Boolean {
-        //val identifiersChildren = psiElement.getNode()!!.getChildren(ELToken.AllIdentifiers())!!
-        val ability = psiElement.getNode()!!.getFirstChildNode()!!.getElementType() is TokIdentifier
-        return ability
+        val child = psiElement.getNode()!!.getFirstChildNode()
+        if (child == null) return false
+        else return child.getElementType() is TokIdentifier
     }
     public override fun getHelpId(psiElement: PsiElement): String? =
             null
@@ -61,11 +63,10 @@ public class ELFindUsagesProvider: FindUsagesProvider{
         return "UnknownType"
     }
     public override fun getDescriptiveName(element: PsiElement): String {
-
          return   "Element with name ${getNodeText(element, true)}"  //descriptions can be supplied through grammar as well, can't they?
     }
     public override fun getNodeText(element: PsiElement, useFullName: Boolean): String {
-        val token = element.getNode()!!.getFirstChildNode()!!.getElementType()
+        val token = element.getNode()!!.getElementType()
         if (token is TokIdentifier )
             return token.Name
         return element.getText()!!

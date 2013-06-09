@@ -8,7 +8,7 @@
     </list>
     <ignored path="extlang.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/fragment.java" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370712514314" ignored="false" />
+    <file path="/fragment.java" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370766553853" ignored="false" />
     <file path="$PROJECT_DIR$/../elang/META-INF/plugin.xml" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1369178295735" ignored="false" />
     <file path="$PROJECT_DIR$/../elang/.idea/workspace.xml" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1369178504244" ignored="false" />
     <file path="/ELLexer.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370521848173" ignored="false" />
@@ -31,19 +31,19 @@
     <file path="/Instruction.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370706442845" ignored="false" />
     <file path="/ELASTNode.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370519638306" ignored="false" />
     <file path="/plugin.xml" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370535051259" ignored="false" />
-    <file path="/ELFindUsagesProvider.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370531660702" ignored="false" />
+    <file path="/ELFindUsagesProvider.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370718137582" ignored="false" />
     <file path="/BNFLexer.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370371328724" ignored="false" />
     <file path="/NamedElement.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370429621149" ignored="false" />
     <file path="/ELReferenceContributor.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370450160719" ignored="false" />
-    <file path="/ELReference.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370544368197" ignored="false" />
-    <file path="/Util.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370685653495" ignored="false" />
+    <file path="/ELReference.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370784053812" ignored="false" />
+    <file path="/Util.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370768558050" ignored="false" />
     <file path="/Extensions.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370684952736" ignored="false" />
     <file path="/ELReferenceContributor.java" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370534467864" ignored="false" />
-    <file path="/UsagesUtil.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370711432950" ignored="false" />
+    <file path="/UsagesUtil.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370768590079" ignored="false" />
     <file path="/ELSyntaxHighlighter.java" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370452266610" ignored="false" />
     <file path="/ELSyntaxHighlighter.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370457141467" ignored="false" />
     <file path="/ELSyntaxHighlighterFactory.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370453004221" ignored="false" />
-    <file path="/ELASTNode.java" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370713066051" ignored="false" />
+    <file path="/ELASTNode.java" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370767399896" ignored="false" />
     <file path="/Symbol.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370521946745" ignored="false" />
     <file path="/ELAnnotator.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370687136985" ignored="false" />
     <file path="/ELAnnotator.java" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370534928957" ignored="false" />
@@ -102,8 +102,8 @@
       </breakpoint>
     </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/indexing-api/src/com/intellij/lang/cacheBuilder/DefaultWordsScanner.java" line="145" class="com.intellij.lang.cacheBuilder.DefaultWordsScanner" package="com.intellij.lang.cacheBuilder">
-        <option name="ENABLED" value="false" />
+      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReference.kt" line="31" class="Class at ELReference.kt:31" package="">
+        <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="SUSPEND_POLICY" value="SuspendAll" />
@@ -116,8 +116,8 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/indexing-api/src/com/intellij/lang/cacheBuilder/DefaultWordsScanner.java" line="61" class="com.intellij.lang.cacheBuilder.DefaultWordsScanner" package="com.intellij.lang.cacheBuilder">
-        <option name="ENABLED" value="false" />
+      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReference.kt" line="47" class="Class at ELReference.kt:47" package="">
+        <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="SUSPEND_POLICY" value="SuspendAll" />
@@ -130,189 +130,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/indexing-api/src/com/intellij/lang/cacheBuilder/DefaultWordsScanner.java" line="69" class="com.intellij.lang.cacheBuilder.DefaultWordsScanner" package="com.intellij.lang.cacheBuilder">
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="&#13;&#13;JAVA" />
-        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
-      </breakpoint>
-      <breakpoint url="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/util/src/com/intellij/util/Processor.java" line="22" class="com.intellij.util.Processor" package="com.intellij.util">
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="&#13;&#13;JAVA" />
-        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELASTNode.java" line="69" class="com.extlang.engine.parser.ELASTNode" package="com.extlang.engine.parser">
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELASTNode.java" line="49" class="com.extlang.engine.parser.ELASTNode" package="com.extlang.engine.parser">
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELASTNode.java" line="39" class="com.extlang.engine.parser.ELASTNode" package="com.extlang.engine.parser">
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReference.kt" line="24" class="Class at ELReference.kt:24" package="">
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReference.kt" line="38" class="Class at ELReference.kt:38" package="">
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReference.kt" line="42" class="Class at ELReference.kt:42" package="">
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/UsagesUtil.kt" line="16" class="Class at UsagesUtil.kt:16" package="">
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt" line="50" class="Class at ELFindUsagesProvider.kt:50" package="">
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt" line="57" class="Class at ELFindUsagesProvider.kt:57" package="">
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt" line="64" class="Class at ELFindUsagesProvider.kt:64" package="">
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELASTNode.java" line="62" class="com.extlang.engine.parser.ELASTNode" package="com.extlang.engine.parser">
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="&#13;&#13;JAVA" />
-        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/GrammarAction.kt" line="30" class="Class at GrammarAction.kt:30" package="">
+      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt" line="68" class="Class at ELFindUsagesProvider.kt:68" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -340,29 +158,58 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ELParseMachine.kt" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELParseMachine.kt">
+      <file leaf-file-name="ELReference.kt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReference.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="11" selection-start="3273" selection-end="3273" vertical-scroll-proportion="0.33333334">
+            <state line="48" column="0" selection-start="1935" selection-end="1935" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ELFindUsagesProvider.kt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt">
+      <file leaf-file-name="PsiMultiReference.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/core-impl/src/com/intellij/psi/impl/source/resolve/reference/impl/PsiMultiReference.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="0" selection-start="1508" selection-end="1508" vertical-scroll-proportion="0.0">
+            <state line="59" column="0" selection-start="2139" selection-end="2139" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plugin.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin/META-INF/plugin.xml">
+      <file leaf-file-name="Library.jet" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.IdeaIC12/config/plugins/Kotlin/lib/kotlin-plugin.jar!/jet/Library.jet">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="124" selection-start="1590" selection-end="1590" vertical-scroll-proportion="0.0">
+            <state line="30" column="13" selection-start="823" selection-end="823" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Util.kt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/util/Util.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="39" column="34" selection-start="1232" selection-end="1232" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PsiReference.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/core-api/src/com/intellij/psi/PsiReference.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="122" column="13" selection-start="4951" selection-end="4951" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ELASTNode.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELASTNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="4" selection-start="1108" selection-end="2674" vertical-scroll-proportion="0.77203065">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -370,43 +217,7 @@
       <file leaf-file-name="UsagesUtil.kt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/UsagesUtil.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="492" selection-end="492" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ELReference.kt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReference.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="0" selection-start="1699" selection-end="1699" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ELASTNode.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELASTNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="9" selection-start="2173" selection-end="2173" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GrammarAction.kt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/GrammarAction.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="1302" selection-end="1302" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GrammarTable.kt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/GrammarTable.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="13" selection-start="378" selection-end="378" vertical-scroll-proportion="0.0">
+            <state line="19" column="43" selection-start="631" selection-end="631" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -425,8 +236,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/model/FixedSyntax.kt" />
-        <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/model/Rule.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/model/ExtendedSyntax.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/GrammarBuilder.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/GrammarTable.kt" />
@@ -434,13 +243,15 @@
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/FirstFollow.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/model/AbstractSyntax.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/machine/Instruction.kt" />
-        <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReferenceContributor.java" />
-        <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/UsagesUtil.kt" />
         <option value="$PROJECT_DIR$/plugin/META-INF/plugin.xml" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/GrammarAction.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELParseMachine.kt" />
+        <option value="$PROJECT_DIR$/plugin/src/com/extlang/util/Util.kt" />
+        <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/UsagesUtil.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELASTNode.java" />
+        <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReference.kt" />
+        <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt" />
       </list>
     </option>
   </component>
@@ -822,7 +633,7 @@
       <recent name="D:\personal-repo\aptu\extlang\plugin\src\com\extlang\engine\parser" />
     </key>
   </component>
-  <component name="RunManager" selected="Plugin.extlang ideamod">
+  <component name="RunManager" selected="Plugin.extlang ideaorig">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="extlang" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -866,7 +677,7 @@
     </configuration>
     <configuration default="false" name="extlang ideaorig" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="extlang" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="VM_PARAMETERS" value="-Xmx256m -Xms256m -XX:MaxPermSize=250m" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <log_file path="$USER_HOME$/.IdeaIC12/system/plugins-sandbox/system/log/idea.log" checked="false" skipped="true" show_all="false" alias="IDEA LOG" />
       <RunnerSettings RunnerId="Debug">
@@ -879,7 +690,7 @@
     </configuration>
     <configuration default="false" name="extlang ideamod" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="extlang" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="VM_PARAMETERS" value="-Xmx256m -Xms256m -XX:MaxPermSize=250m" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <log_file path="$USER_HOME$/.IdeaIC12/system/plugins-sandbox/system/log/idea.log" checked="false" skipped="true" show_all="false" alias="IDEA LOG" />
       <RunnerSettings RunnerId="Debug">
@@ -1068,115 +879,117 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/model/TreeTransformations.kt">
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/indexing-api/src/com/intellij/psi/search/SingleTargetRequestResultProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="13" selection-start="404" selection-end="404" vertical-scroll-proportion="0.26984128">
+        <state line="50" column="0" selection-start="1888" selection-end="1888" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/FirstFollow.kt">
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/core-api/src/com/intellij/psi/PsiPolyVariantReference.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="281" selection-end="281" vertical-scroll-proportion="0.1734694">
+        <state line="28" column="17" selection-start="1122" selection-end="1122" vertical-scroll-proportion="0.40545145">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/model/Rule.kt">
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/core-api/src/com/intellij/psi/PsiElementResolveResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="77" selection-start="1689" selection-end="1689" vertical-scroll-proportion="1.3106576">
+        <state line="40" column="9" selection-start="1229" selection-end="1229" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/model/AbstractSyntax.kt">
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/indexing-impl/src/com/intellij/psi/impl/search/LowLevelSearchUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="34" selection-start="2049" selection-end="2049" vertical-scroll-proportion="1.2142857">
+        <state line="121" column="0" selection-start="5102" selection-end="5102" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/model/FixedSyntax.kt">
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/indexing-impl/src/com/intellij/psi/impl/search/PsiSearchHelperImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="40" selection-start="321" selection-end="321" vertical-scroll-proportion="0.23129252">
+        <state line="53" column="0" selection-start="2201" selection-end="2263" vertical-scroll-proportion="0.20039293">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/machine/Instruction.kt">
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/find/findUsages/DefaultFindUsagesHandlerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="4" selection-start="1442" selection-end="1442" vertical-scroll-proportion="0.8287982">
+        <state line="31" column="0" selection-start="1141" selection-end="1141" vertical-scroll-proportion="0.348659">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReferenceContributor.java">
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/codeInsight/daemon/impl/PassExecutorService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="2" selection-start="980" selection-end="980" vertical-scroll-proportion="0.3469388">
+        <state line="365" column="43" selection-start="16030" selection-end="16057" vertical-scroll-proportion="0.49616858">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/util/src/com/intellij/util/ProcessingContext.java">
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-api/src/com/intellij/psi/PsiReferenceBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="237" selection-end="237" vertical-scroll-proportion="0.03628118">
+        <state line="50" column="9" selection-start="1554" selection-end="1554" vertical-scroll-proportion="1.0421456">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/META-INF/plugin.xml">
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/core-api/src/com/intellij/psi/PsiReference.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="124" selection-start="1590" selection-end="1590" vertical-scroll-proportion="0.0">
+        <state line="122" column="13" selection-start="4951" selection-end="4951" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/util/Util.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="34" selection-start="1232" selection-end="1232" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.IdeaIC12/config/plugins/Kotlin/lib/kotlin-plugin.jar!/jet/Library.jet">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="13" selection-start="823" selection-end="823" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/core-impl/src/com/intellij/psi/impl/source/resolve/reference/impl/PsiMultiReference.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="0" selection-start="2139" selection-end="2139" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReference.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="0" selection-start="1699" selection-end="1699" vertical-scroll-proportion="0.0">
+        <state line="48" column="0" selection-start="1935" selection-end="1935" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="1508" selection-end="1508" vertical-scroll-proportion="0.0">
+        <state line="72" column="25" selection-start="2681" selection-end="2681" vertical-scroll-proportion="0.77203065">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/UsagesUtil.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="492" selection-end="492" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/GrammarTable.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="378" selection-end="378" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/GrammarAction.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="1302" selection-end="1302" vertical-scroll-proportion="0.0">
+        <state line="19" column="43" selection-start="631" selection-end="631" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELASTNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="9" selection-start="2173" selection-end="2173" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELParseMachine.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="11" selection-start="3273" selection-end="3273" vertical-scroll-proportion="0.33333334">
-          <folding />
+        <state line="74" column="4" selection-start="1108" selection-end="2674" vertical-scroll-proportion="0.77203065">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

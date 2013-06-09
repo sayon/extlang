@@ -74,7 +74,7 @@ class Util
                 }
             }                   */
 
-            return result
+            return result.map { (node) -> node.getTreeParent()!!}
         }
 
 

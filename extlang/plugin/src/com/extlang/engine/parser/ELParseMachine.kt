@@ -131,19 +131,20 @@ class ELParseMachine(public val ParseTable: GrammarTable)
         for( instr in program)
             when (instr)
             {
-                is Instruction.TerminalNode ->
-                    // I wanted to use an inner function for that, but when I tried, Kotlin crashed, so...
-                if (phantomTreeSwitch)
+                is Instruction.TerminalNode -> // I wanted to use an inner function for that, but when I tried, Kotlin crashed, so...
                 {
-                    if (instr.Term == TermIdent.Instance)
+                    if (phantomTreeSwitch)
                     {
-                        val tok = ELToken.fromIdentifier(instr.Name)
-                        builder.mark()!!.done(tok)
+                        if (instr.Term == TermIdent.Instance)
+                        {
+                            val tok = ELToken.fromIdentifier(instr.Name)
+                            builder.mark()!!.done(tok)
+                        }
+                        else builder.mark()!!.done(ELToken.fromTerminal(instr.Term))
                     }
-                    else builder.mark()!!.done(ELToken.fromTerminal(instr.Term))
+                    else
+                        builder.advanceLexer()
                 }
-                else
-                    builder.advanceLexer()
 
                 is Instruction.PhantomOn ->
                     phantomTreeSwitch = true
