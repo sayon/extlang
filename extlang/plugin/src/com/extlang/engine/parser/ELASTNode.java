@@ -27,33 +27,32 @@ public class ELASTNode extends ASTWrapperPsiElement implements PsiNamedElement {
         super(node);
     }
 
-    /**
-     * Renames the element.
-     *
-     * @param name the new element name.
-     * @return the element corresponding to this element after the rename (either <code>this</code>
-     * or a different element if the rename caused the element to be replaced).
-     * @throws com.intellij.util.IncorrectOperationException
-     * if the modification is not supported or not possible for some reason.
-     */
     public String Name = "";
 
     @Override
-    public  String getName()
-    {
-       final PsiElement child = getFirstChild();
-        if (child ==  null || ! (child.getNode().getElementType() instanceof  TokIdentifier)) return null;
-        final TokIdentifier tid = (TokIdentifier) ( child.getNode().getElementType());
+    public String getName() {
+        final PsiElement child = getFirstChild();
+        if (child == null || !(child.getNode().getElementType() instanceof TokIdentifier)) return null;
+        final TokIdentifier tid = (TokIdentifier) (child.getNode().getElementType());
         return tid.getName();
     }
+
+
     @Override
     public PsiElement setName(@NonNls @NotNull String name) throws IncorrectOperationException {
-        Name = name;
-        return this;
+     /*   Name = name;
+        return this;*/
+        throw new IncorrectOperationException("Set name is not implemented");
     }
 
     @Override
     public PsiReference[] getReferences() {
-        return new PsiReference[]{ UsagesUtil.object.$instance.firstIdentifierReference(this)};
+        if (getName() != null && getName().length() > 0)
+
+        {
+            final PsiReference firstReference = UsagesUtil.object.$instance.firstIdentifierReference(this);
+            if (firstReference != null) return new PsiReference[]{firstReference};
+        }
+        return PsiReference.EMPTY_ARRAY;
     }
 }

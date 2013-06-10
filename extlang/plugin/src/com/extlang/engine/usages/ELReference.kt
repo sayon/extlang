@@ -27,7 +27,7 @@ public class ELReference(public val _Element: PsiElement, public val _Range: Tex
         return _Element
     }
     public override fun getRangeInElement(): TextRange? {
-        return TextRange(0, _Element.getTextLength() - 1)
+        return TextRange(0, _Element.getTextLength())
     }
 
     public override fun resolve(): PsiElement? {

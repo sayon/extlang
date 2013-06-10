@@ -25,11 +25,11 @@ class UsagesUtil
             val identifiers = Util.findIdentifiers(project, name)
             return if (identifiers.size > 0) identifiers[0].getPsi() else null
         }
-            public fun firstIdentifierReference(element: PsiNamedElement): PsiReference
+        public fun firstIdentifierReference(element: PsiNamedElement): PsiReference?
         {
             val ident = firstIdentifier(element)
-            val ref = ELReference(element, element.getTextRange(), ident!!)
-            return ref
+            return if (ident != null) ELReference(element, element.getTextRange(), ident!!.getParent())
+            else null
         }
 
     }

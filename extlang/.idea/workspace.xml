@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3df35108-6668-48c4-b1c5-84e00079642f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugin/src/com/extlang/GrammarAction.kt" afterPath="$PROJECT_DIR$/plugin/src/com/extlang/GrammarAction.kt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugin/src/com/extlang/engine/ELLexer.kt" afterPath="$PROJECT_DIR$/plugin/src/com/extlang/engine/ELLexer.kt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugin/extlang.iml" afterPath="$PROJECT_DIR$/plugin/extlang.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugin/src/com/extlang/GrammarAction.kt" afterPath="$PROJECT_DIR$/plugin/src/com/extlang/GrammarAction.kt" />
     </list>
     <ignored path="extlang.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +30,8 @@
     <file path="/QTree.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370689854102" ignored="false" />
     <file path="/Instruction.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370706442845" ignored="false" />
     <file path="/ELASTNode.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370519638306" ignored="false" />
-    <file path="/plugin.xml" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370535051259" ignored="false" />
-    <file path="/ELFindUsagesProvider.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370718137582" ignored="false" />
+    <file path="/plugin.xml" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370815603780" ignored="false" />
+    <file path="/ELFindUsagesProvider.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370864881300" ignored="false" />
     <file path="/BNFLexer.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370371328724" ignored="false" />
     <file path="/NamedElement.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370429621149" ignored="false" />
     <file path="/ELReferenceContributor.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370450160719" ignored="false" />
@@ -39,11 +39,11 @@
     <file path="/Util.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370789339940" ignored="false" />
     <file path="/Extensions.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370684952736" ignored="false" />
     <file path="/ELReferenceContributor.java" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370534467864" ignored="false" />
-    <file path="/UsagesUtil.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370805336280" ignored="false" />
+    <file path="/UsagesUtil.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370864620657" ignored="false" />
     <file path="/ELSyntaxHighlighter.java" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370452266610" ignored="false" />
     <file path="/ELSyntaxHighlighter.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370457141467" ignored="false" />
     <file path="/ELSyntaxHighlighterFactory.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370453004221" ignored="false" />
-    <file path="/ELASTNode.java" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370805493850" ignored="false" />
+    <file path="/ELASTNode.java" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370864690104" ignored="false" />
     <file path="/Symbol.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370521946745" ignored="false" />
     <file path="/ELAnnotator.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370687136985" ignored="false" />
     <file path="/ELAnnotator.java" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370534928957" ignored="false" />
@@ -51,6 +51,7 @@
     <file path="/TreeTransformations.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370691615321" ignored="false" />
     <file path="/Rule.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370691385722" ignored="false" />
     <file path="/AbstractSyntax.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370694230791" ignored="false" />
+    <file path="/ELElementDescriptionProvider.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370816052267" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +66,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -101,7 +102,35 @@
       </breakpoint>
     </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/UsagesUtil.kt" line="22" class="Class at UsagesUtil.kt:22" package="">
+      <breakpoint url="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/indexing-impl/src/com/intellij/psi/impl/cache/impl/IndexCacheManagerImpl.java" line="104" class="com.intellij.psi.impl.cache.impl.IndexCacheManagerImpl" package="com.intellij.psi.impl.cache.impl">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/openapi/editor/actions/FindAction.java" line="32" class="com.intellij.openapi.editor.actions.FindAction.Handler" package="com.intellij.openapi.editor.actions">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/openapi/editor/actions/FindAction.java" line="37" class="com.intellij.openapi.editor.actions.FindAction.Handler" package="com.intellij.openapi.editor.actions">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -116,7 +145,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </line_breakpoints>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -130,37 +159,68 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ELReference.kt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReference.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="0" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ELFindUsagesProvider.kt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="0" selection-start="2517" selection-end="2517" vertical-scroll-proportion="0.0">
+            <state line="70" column="0" selection-start="2531" selection-end="2531" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Util.kt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/util/Util.kt">
+      <file leaf-file-name="UsageViewManagerImpl.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/usageView/src/com/intellij/usages/impl/UsageViewManagerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="20" selection-start="1218" selection-end="1218" vertical-scroll-proportion="0.0">
+            <state line="141" column="0" selection-start="6008" selection-end="6008" vertical-scroll-proportion="0.33222038">
+              <folding>
+                <element signature="e#5535#5550#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultFindUsagesHandlerFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/find/findUsages/DefaultFindUsagesHandlerFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="0" selection-start="1141" selection-end="1141" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UsagesUtil.kt" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ELASTNode.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELASTNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="53" column="82" selection-start="1989" selection-end="1989" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsagesUtil.kt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/UsagesUtil.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="36" selection-start="636" selection-end="636" vertical-scroll-proportion="0.5065312">
+            <state line="27" column="22" selection-start="865" selection-end="865" vertical-scroll-proportion="-18.36">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ELReference.kt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReference.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="0" selection-start="1005" selection-end="1005" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TargetElementUtilBase.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/codeInsight/TargetElementUtilBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="304" column="0" selection-start="10749" selection-end="10749" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -179,7 +239,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/model/ExtendedSyntax.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/GrammarBuilder.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/GrammarTable.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/model/TreeTransformations.kt" />
@@ -187,14 +246,15 @@
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/model/AbstractSyntax.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/machine/Instruction.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReferenceContributor.java" />
-        <option value="$PROJECT_DIR$/plugin/META-INF/plugin.xml" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/GrammarAction.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELParseMachine.kt" />
-        <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/util/Util.kt" />
+        <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELElementDescriptionProvider.kt" />
+        <option value="$PROJECT_DIR$/plugin/META-INF/plugin.xml" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReference.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/UsagesUtil.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELASTNode.java" />
+        <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt" />
       </list>
     </option>
   </component>
@@ -231,6 +291,122 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="machine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -431,122 +607,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="machine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.extlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -566,9 +626,9 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -735,23 +795,23 @@
     <frame x="-5" y="25" width="1930" height="1060" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32488987" sideWeight="0.49573106" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929516" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.311674" sideWeight="0.4914621" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32488987" sideWeight="0.50053364" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Kotlin" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32488987" sideWeight="0.49573106" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929516" sideWeight="0.49786553" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.6035242" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3564568" sideWeight="0.78744495" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21255507" sideWeight="0.4914621" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Kotlin" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32488987" sideWeight="0.50053364" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3655283" sideWeight="0.688326" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929516" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -822,111 +882,127 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/indexing-impl/src/com/intellij/psi/impl/search/PsiSearchHelperImpl.java">
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/platform-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="2201" selection-end="2263" vertical-scroll-proportion="0.20039293" />
-      </provider>
-    </entry>
-    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/find/findUsages/DefaultFindUsagesHandlerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="1141" selection-end="1141" vertical-scroll-proportion="0.348659" />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.IdeaIC12/config/plugins/Kotlin/lib/kotlin-plugin.jar!/jet/Library.jet">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="13" selection-start="823" selection-end="823" vertical-scroll-proportion="0.0">
+        <state line="138" column="0" selection-start="4721" selection-end="4721" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/core-impl/src/com/intellij/psi/impl/source/resolve/reference/impl/PsiMultiReference.java">
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/find/findUsages/FindUsagesHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="0" selection-start="2139" selection-end="2139" vertical-scroll-proportion="0.0">
+        <state line="117" column="0" selection-start="4498" selection-end="4498" vertical-scroll-proportion="0.34163702">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/core-impl/src/com/intellij/psi/impl/PsiElementBase.java">
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/find/findUsages/FindUsagesManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="174" column="12" selection-start="4966" selection-end="4966" vertical-scroll-proportion="0.0">
+        <state line="411" column="0" selection-start="17089" selection-end="17089" vertical-scroll-proportion="0.3424408">
+          <folding>
+            <element signature="e#16168#16179#0" expanded="true" />
+            <element signature="e#16180#16402#0" expanded="true" />
+            <element signature="e#16391#16392#0" expanded="true" />
+            <element signature="e#16931#17086#0" expanded="true" />
+            <element signature="e#17071#17072#0" expanded="true" />
+            <element signature="e#19630#19810#0" expanded="true" />
+            <element signature="e#19803#19804#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/find/actions/FindUsagesAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="0" selection-start="2729" selection-end="2729" vertical-scroll-proportion="0.32933104">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-api/src/com/intellij/psi/PsiReferenceBase.java">
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/find/impl/FindManagerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="176" column="29" selection-start="5276" selection-end="5276" vertical-scroll-proportion="0.15192744" />
+        <state line="726" column="0" selection-start="26080" selection-end="26080" vertical-scroll-proportion="0.32982457">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/find/findUsages/PsiElement2UsageTargetAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="0" selection-start="3507" selection-end="3507" vertical-scroll-proportion="0.21768707">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/indexing-impl/src/com/intellij/psi/impl/search/CachesBasedRefSearcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="990" selection-end="990" vertical-scroll-proportion="0.33222038">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELASTNode.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/core-api/src/com/intellij/psi/PsiElement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="421" column="17" selection-start="15985" selection-end="15985" vertical-scroll-proportion="0.0">
+        <state line="405" column="17" selection-start="15050" selection-end="15050" vertical-scroll-proportion="0.028380634">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/util/src/com/intellij/openapi/util/TextRange.java">
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/codeInsight/TargetElementUtilBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="9" selection-start="1024" selection-end="1024" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/core-api/src/com/intellij/psi/PsiReference.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="17" selection-start="1618" selection-end="1618" vertical-scroll-proportion="0.33333334">
+        <state line="304" column="0" selection-start="10749" selection-end="10749" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELReference.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="0" selection-start="2517" selection-end="2517" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/util/Util.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="20" selection-start="1218" selection-end="1218" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/core-api/src/com/intellij/psi/PsiNamedElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="19" selection-start="1214" selection-end="1232" vertical-scroll-proportion="0.46879536">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELASTNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="29" selection-start="1840" selection-end="1840" vertical-scroll-proportion="0.7532656">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/codeInsight/daemon/impl/PassExecutorService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="370" column="0" selection-start="16161" selection-end="16161" vertical-scroll-proportion="0.2525399">
+        <state line="26" column="0" selection-start="1005" selection-end="1005" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/UsagesUtil.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="36" selection-start="636" selection-end="636" vertical-scroll-proportion="0.5065312">
+        <state line="27" column="22" selection-start="865" selection-end="865" vertical-scroll-proportion="-18.36">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELASTNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="82" selection-start="1989" selection-end="1989" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/find/findUsages/DefaultFindUsagesHandlerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="0" selection-start="1141" selection-end="1141" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="0" selection-start="2531" selection-end="2531" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/usageView/src/com/intellij/usages/impl/UsageViewManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="0" selection-start="6008" selection-end="6008" vertical-scroll-proportion="0.33222038">
+          <folding>
+            <element signature="e#5535#5550#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
