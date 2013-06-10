@@ -1,7 +1,6 @@
 package com.extlang.engine.parser;
 
 import com.extlang.engine.model.ELToken;
-import com.extlang.engine.usages.ELNamedElement;
 import com.extlang.engine.usages.ELReference;
 import com.extlang.engine.usages.UsagesUtil;
 import com.extlang.util.Util;
@@ -40,6 +39,7 @@ public class ELASTNode extends ASTWrapperPsiElement implements PsiNamedElement {
 
     @Override
     public PsiElement setName(@NonNls @NotNull String name) throws IncorrectOperationException {
+
      /*   Name = name;
         return this;*/
         throw new IncorrectOperationException("Set name is not implemented");
@@ -56,3 +56,6 @@ public class ELASTNode extends ASTWrapperPsiElement implements PsiNamedElement {
         return PsiReference.EMPTY_ARRAY;
     }
 }
+
+
+
