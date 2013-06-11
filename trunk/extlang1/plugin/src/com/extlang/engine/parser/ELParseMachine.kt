@@ -137,7 +137,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
                     {
                         if (instr.Term == TermIdent.Instance)
                         {
-                            val tok = ELToken.fromIdentifier(instr.Name)
+                            val tok = ELToken.fromIdentifier(instr.Name!!)
                             builder.mark()!!.done(tok)
                         }
                         else builder.mark()!!.done(ELToken.fromTerminal(instr.Term))
@@ -157,7 +157,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
                 is Instruction.InsertTree ->
                     executeProgram(environment[instr.AliasName]!!, builder, environment, instr.isPhantom)
                 is Instruction.StoreNonTerminal ->
-                    environment.put(instr.AliasName, generateProgram(instr.NonTerm, builder))
+                    environment.put(instr.AliasName, generateProgram(instr.NonTerm, builder)!!)
 
                 else ->
                     throw UnsupportedOperationException("instruction ${instr.toString()} is not yet supported")
@@ -246,7 +246,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
                                 ctoken.Sym -> {
 
                                     val name = if (ctoken is TokIdentifier) ctoken.Name else null
-                                    program.add(Instruction.TerminalNode(ctoken.Sym, name));
+                                    program.add(Instruction.TerminalNode(ctoken.Sym as Terminal, name));
 
                                     stack.pop();
                                     advance()
@@ -254,7 +254,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
                                 else ->
                                     {
                                         if (top.AliasedName != null)
-                                            program.add(Instruction.StoreNonTerminal(top.Sym, top.AliasedName))
+                                            program.add(Instruction.StoreNonTerminal(top.Sym as NonTerminal, top.AliasedName))
                                         error = !applyRule(builder, ctoken)
                                     }
                             }

@@ -24,7 +24,7 @@ class ELParser: PsiParser
 {
     public override fun parse(root: IElementType?, builder: PsiBuilder?): ASTNode {
         return if (GrammarTable.Instance != null)
-            ELParseMachine(GrammarTable.Instance).parse(root, builder as PsiBuilderImpl)
+            ELParseMachine(GrammarTable.Instance!!).parse(root, builder as PsiBuilderImpl)
         else primitiveParse(root, builder)
     }
 

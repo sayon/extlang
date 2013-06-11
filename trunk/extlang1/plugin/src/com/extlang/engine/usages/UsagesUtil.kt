@@ -28,7 +28,7 @@ class UsagesUtil
         public fun firstIdentifierReference(element: PsiNamedElement): PsiReference?
         {
             val ident = firstIdentifier(element)
-            return if (ident != null) ELReference(element, element.getTextRange(), ident!!.getParent())
+            return if (ident != null) ELReference(element, element.getTextRange()!!, ident!!.getParent()!!)
             else null
         }
 

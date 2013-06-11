@@ -79,7 +79,7 @@ public class GrammarBuilder(tree: TreeElement) {
     private fun addNonTerminals(syntax: FixedSyntax, nonTerminalsDescriptionNode: TreeElement)
     {
         for(elem in nonTerminalsDescriptionNode.getChildren(NTIdentifierTokenSet)!!)
-            syntax.addNonTerminalByName(elem.getText())
+            syntax.addNonTerminalByName(elem.getText()!!)
     }
     private fun addRule(syntax: ExtendedSyntax, ruleNode: TreeElement)
     {
@@ -101,20 +101,20 @@ public class GrammarBuilder(tree: TreeElement) {
             {
                 "TIDENTIFIER" ->
                     {
-                        val symb = syntax.symbolByName(tidentOrDescr.getText())
+                        val symb = syntax.symbolByName(tidentOrDescr.getText()!!)
                         if (symb == null )
                             logger.error("Can't find terminal with the name of ${tidentOrDescr.getText()}")
                         else rhsPrepared.add(symb)
                     }
                 "NTTERMINALORALIASED" ->
                     {
-                        val symb = syntax.symbolByName(tidentOrDescr.getChildren(NTIdentifierTokenSet)!![0].getText())
+                        val symb = syntax.symbolByName(tidentOrDescr.getChildren(NTIdentifierTokenSet)!![0].getText()!!)
                         if (symb == null)
                             System.err.println("Can't find terminal with the name of ${tidentOrDescr.getText()}")
                         else {
                             val aliasarr = tidentOrDescr.getChildren(AliasTokenSet)!!
                             if (!aliasarr.isEmpty())
-                                syntax.Transformations.addAlias(rhsPrepared, idx, aliasarr[0].getText())
+                                syntax.Transformations.addAlias(rhsPrepared, idx, aliasarr[0].getText()!!)
                             rhsPrepared.add(symb)
                         }
                     }
@@ -123,7 +123,7 @@ public class GrammarBuilder(tree: TreeElement) {
             }
 
         }
-        syntax.addRule(syntax.symbolByName(lhs), rhsPrepared)
+        syntax.addRule(syntax.symbolByName(lhs) as NonTerminal, rhsPrepared)
         if (isExtension)
             addTree(quotedTreeNodeArr[0] as TreeElement, rhsPrepared, syntax)
     }
@@ -143,13 +143,13 @@ public class GrammarBuilder(tree: TreeElement) {
                 when (content.getElementType().toString())
                 {
                     "ALIAS" -> {
-                        QTreeRefNode(content.getText())
+                        QTreeRefNode(content.getText()!!)
                     }
                     "NTIDENTIFIER" -> {
-                        QTreeNonTermNode(syntax.symbolByName(content.getText()))
+                        QTreeNonTermNode(syntax.symbolByName(content.getText()!!) as NonTerminal)
                     }
                     "TIDENTIFIER" -> {
-                        QTreeTermNode(syntax.symbolByName(content.getText()))
+                        QTreeTermNode(syntax.symbolByName(content.getText()!!)as NonTerminal)
                     }
                     else -> {
                         throw UnsupportedOperationException(

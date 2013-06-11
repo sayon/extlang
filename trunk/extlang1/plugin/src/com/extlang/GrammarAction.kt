@@ -16,6 +16,7 @@ import com.intellij.openapi.ui.Messages
 import com.extlang.grammar.BNFLanguage
 import com.extlang.grammar.psi.BNFSimpleTypes
 import com.extlang.engine.model.ExtendedSyntax
+import com.intellij.psi.impl.source.tree.TreeElement
 
 /**This action should be invoked when we */
 public open class GrammarAction(): AnAction() {
@@ -28,7 +29,7 @@ public open class GrammarAction(): AnAction() {
         else
         {
             System.err.println("Building grammar from file ${file!!.getName()}")
-            val grammarBuilder = GrammarBuilder(file?.getNode())
+            val grammarBuilder = GrammarBuilder(file?.getNode()as TreeElement)
             ExtendedSyntax.Instance = grammarBuilder.ParsingTable.SyntaxProvided
 
             GrammarTable.Instance = GrammarTable(ExtendedSyntax.Instance)

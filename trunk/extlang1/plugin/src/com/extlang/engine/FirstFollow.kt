@@ -78,7 +78,7 @@ class FirstFollow (public val SyntaxProvided: AbstractSyntax)
                 break
             }
             else
-                result.addAll(first(sym))
+                result.addAll(first(sym)!!)
         }
         if (containsEpsilon) result.add(TermEpsilon.Instance)
 

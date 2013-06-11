@@ -36,7 +36,7 @@ class Program: ArrayList<Instruction>()
                 }
             }
             val ret = Program()
-            traverse(tree.Root, ret)
+            traverse(tree.Root!!, ret)
             return ret
         }
     }

@@ -53,11 +53,11 @@ class Util
                     if (key != null)
                     {
                         val token = ELToken.fromIdentifier(key)
-                        result.addAll(Util.CollectDescendants(file.getNode(), {(node)-> node.getElementType() == token }))
+                        result.addAll(Util.CollectDescendants(file.getNode()!!, {(node)-> node.getElementType() == token }))
                     }
                     else
                     {
-                        result.addAll(Util.CollectDescendants(file.getNode(), {(node)-> node.getElementType() is TokIdentifier }))
+                        result.addAll(Util.CollectDescendants(file.getNode()!!, {(node)-> node.getElementType() is TokIdentifier }))
                     }
             }
 
