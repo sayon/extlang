@@ -121,8 +121,11 @@ Well,the problem is that syntax extensions mean the AST produced for the compile
 If we want to delete some tokens that are really in file, the only option we found was to remap them to whitespace-like tokens so the builder will ignore them (and so will the compiler, provided with syntax PSI tree). 
 
 
+
 ===Changes in IDEA===
 It looks like the default PsiBuilderImpl caches lexemes from lexer and can not lookup further than a part of the file. So we need to change the 'cachelexemes' method in order to fix it.
+
+The other problem can be observed at UpdateHighlighterUtil.java:422 . If we try to highlight zero characters at the last position in file, we will get out of bounds because of this increment. Exactly a situation when the last statement in file is an extension containing an identifier with a reference. 
 
 
 
@@ -134,6 +137,8 @@ First, we wanted to show not only usages in real code but also in a preprocessed
 First of all, we won't get into phantom trees when using any standard-like lexer. We need a special one crawling psi tree (such one is provided as a PoC in PsiLexer.kt)
 
 Even then, the lexemes' length will be 0 inside the phantom tree. When working with WordOccurences, produced by word scanner, we will add words into IDEA's index, taking their hash codes. Hash code of the zero-length word will be zero and such word will not be added into the index. Fail. 
+Check:
+IdDataConsumer:58
 
 Other than that, find usages works flawlessly.
 
@@ -142,6 +147,9 @@ Other than that, find usages works flawlessly.
 =Code formatter=
 
 Is trivial (just care that some nodes are phantom ones). We just collect the real leaves and attach it to the root block, so it does not make a problem.
+
+
+=Other unconveniences=
 
 == Contacts ==
 Should you have any questions, you can email me (igorjirkov)
