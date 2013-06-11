@@ -1,0 +1,49 @@
+<idea-plugin version="2">
+    <id>com.aptu.ijam.elang</id>
+    <name>ELang</name>
+    <version>1.0</version>
+    <vendor>IJAM</vendor>
+
+    <description><![CDATA[
+     Here is a test plugin for Intellij IDEA, supporting languages with interpreted and extensible grammar
+      ]]></description>
+
+    <change-notes><![CDATA[
+Initial release
+      ]]>
+    </change-notes>
+
+    <idea-version since-build="107.105"/>
+
+    <actions>
+        <action id="com.extlang.RebuildGrammarAction" class="com.extlang.GrammarAction"
+                text="Load this as a grammar file"
+                description="Use this as a source grammar for language parsing">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+       <!-- <action id="com.extlang.InitializePsiLexerAction" class="com.extlang.InitializePsiLexerAction"
+                text="Initialize Psi Lexer"
+                description="You won't be able to find usages without it">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action> -->
+
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileTypeFactory implementation="com.extlang.ELFileTypeFactory"/>
+        <lang.parserDefinition language="EL" implementationClass="com.extlang.parser.ELParserDefinition"/>
+        <lang.parserDefinition language="BNF" implementationClass="com.extlang.parser.BNFParserDefinition"/>
+
+
+        <lang.findUsagesProvider language="EL" implementationClass="com.extlang.engine.usages.ELFindUsagesProvider"/>
+
+        <lang.syntaxHighlighterFactory key="EL" implementationClass="com.extlang.highlighter.ELSyntaxHightlighterFactory"/>
+         <annotator language="EL" implementationClass="com.extlang.annotator.ELAnnotator"/>
+        <lang.formatter language="EL" implementationClass="com.extlang.formatter.ELFormattingModelBuilder"/>
+
+    </extensions>
+</idea-plugin>
+
+
+
+        <!--  <psi.referenceContributor language="EL" implementation="com.extlang.engine.usages.ELReferenceContributor"/>-->
