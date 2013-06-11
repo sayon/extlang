@@ -1,0 +1,36 @@
+
+{
+  parserClass="com.extlang.grammar.psi.BNFParser"
+  stubParserClass="com.extlang.grammar.GeneratedParserUtilBase"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="BNF"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.extlang.grammar.psi"
+  psiImplPackage="com.extlang.grammar.psi.impl"
+
+  elementTypeHolderClass="com.extlang.grammar.psi.BNFSimpleTypes"
+  elementTypeClass="com.extlang.grammar.BNFElementType"
+  tokenTypeClass="com.extlang.grammar.BNFTokenType"
+}
+
+BNFFile ::= nonterminals starter terminals rules
+
+nonterminals ::= NONTERMINALSCAPTION CRLF (NTIDENTIFIER CRLF?)* CRLF*
+terminals ::= TERMINALSCAPTION CRLF (terminaldescription CRLF*)*
+terminaldescription ::= TIDENTIFIER TREPR
+starter ::= STARTERCAPTION CRLF NTIDENTIFIER CRLF+
+rules ::= RULESCAPTION CRLF (rule SEMICOLON CRLF*)*
+
+rule ::= lefthandside EQUAL righthandside   ARROW LEFTBRACE quotedtree RIGHTBRACE
+|   lefthandside EQUAL righthandside
+
+lefthandside ::= ntterminaloraliased
+righthandside ::= symbol+
+
+symbol ::= TIDENTIFIER | ntterminaloraliased
+ntterminaloraliased ::= NTIDENTIFIER |  LEFTBRACE NTIDENTIFIER AS ALIAS RIGHTBRACE
+
+quotedtree ::= LEFTANGLE nodecontent    (SEMICOLON quotedtree* )? RIGHTANGLE
+nodecontent ::= ALIAS | NTIDENTIFIER | TIDENTIFIER
