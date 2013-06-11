@@ -129,12 +129,19 @@ It looks like the default PsiBuilderImpl caches lexemes from lexer and can not l
 =Find usages=
 First, we wanted to show not only usages in real code but also in a preprocessed, where syntax extensions are applied. However this turned to not be possible atm. The bad thing happends when IDEA builds the word cache after using WordsScanner. When we invoke "Find Usages" on variable "x" it is firstly dereferenced (if it is not a PsiNamedElement itself), then with its definition as AST node (to which the reference should have pointed) we scan the words looking for a word matching the PsiNamedElement's "getName()" method invokation result. 
 
+
+==What's wrong with it==
 First of all, we won't get into phantom trees when using any standard-like lexer. We need a special one crawling psi tree (such one is provided as a PoC in PsiLexer.kt)
 
 Even then, the lexemes' length will be 0 inside the phantom tree. When working with WordOccurences, produced by word scanner, we will add words into IDEA's index, taking their hash codes. Hash code of the zero-length word will be zero and such word will not be added into the index. Fail. 
 
+Other than that, find usages works flawlessly.
 
+*NB* in this project every IDENT must be always the node of one special nonterminal node, used exclusively as a sole parent of an identifier and providing getName() for it (as well as being a target or a producer of references).
 
+=Code formatter=
+
+Is trivial (just care that some nodes are phantom ones). We just collect the real leaves and attach it to the root block, so it does not make a problem.
 
 == Contacts ==
 Should you have any questions, you can email me (igorjirkov)
