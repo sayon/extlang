@@ -25,7 +25,7 @@
     <file path="/FixedSyntax.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370948726667" ignored="false" />
     <file path="/GrammarTable.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370693212935" ignored="false" />
     <file path="/Syntax.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370267056482" ignored="false" />
-    <file path="/Program.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370267999143" ignored="false" />
+    <file path="/Program.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370953668357" ignored="false" />
     <file path="/FirstFollow.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370693437039" ignored="false" />
     <file path="/QTree.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370947546619" ignored="false" />
     <file path="/Instruction.kt" changelist="3df35108-6668-48c4-b1c5-84e00079642f" time="1370706442845" ignored="false" />
@@ -191,62 +191,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Util.kt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/util/Util.kt">
+      <file leaf-file-name="Extensions.kt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/util/Extensions.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="33" selection-start="2159" selection-end="2164" vertical-scroll-proportion="0.0">
+            <state line="11" column="14" selection-start="289" selection-end="289" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ELBlock.kt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/formatter/ELBlock.kt">
+      <file leaf-file-name="Program.kt" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/machine/Program.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="0" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.0">
+            <state line="13" column="4" selection-start="345" selection-end="345" vertical-scroll-proportion="0.36894825">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InitializePsiLexerAction.kt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/InitializePsiLexerAction.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="12" selection-start="733" selection-end="733" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ELFormattingModelBuilder.kt" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/formatter/ELFormattingModelBuilder.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="33" selection-start="1935" selection-end="1935" vertical-scroll-proportion="0.5459098">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ELToken.kt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/model/ELToken.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="92" column="0" selection-start="3348" selection-end="3348" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#1344#1390#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ELLexer.kt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/ELLexer.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="0" selection-start="2555" selection-end="2555" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!block;n#start#0;n#!!block;n#ELLexer#0" expanded="false" />
-                <element signature="n#!!block;n#getState#0;n#!!block;n#ELLexer#0" expanded="false" />
-                <element signature="n#!!block;n#getTokenType#0;n#!!block;n#ELLexer#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -264,7 +222,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/UsagesUtil.kt" />
         <option value="D:/ideaIC-12.0-src/ideaIC-123.72/platform/indexing-api/src/com/intellij/lang/cacheBuilder/DefaultWordsScanner.java" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/ELASTNode.kt" />
         <option value="$PROJECT_DIR$/plugin/META-INF/plugin.xml" />
@@ -273,13 +230,14 @@
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/PsiLexer.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/ELLexer.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/util/Util.kt" />
-        <option value="$PROJECT_DIR$/plugin/src/com/extlang/InitializePsiLexerAction.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/formatter/ELBlock.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/model/QTree.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/model/FixedSyntax.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/model/ELToken.kt" />
         <option value="$PROJECT_DIR$/plugin/src/com/extlang/formatter/ELFormattingModelBuilder.kt" />
+        <option value="$PROJECT_DIR$/plugin/src/com/extlang/InitializePsiLexerAction.kt" />
+        <option value="$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/machine/Program.kt" />
       </list>
     </option>
   </component>
@@ -395,6 +353,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="highlighter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="formatter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -470,6 +450,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="machine" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -848,8 +858,8 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929516" sideWeight="0.49786553" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.6035242" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3815368" sideWeight="0.688326" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.311674" sideWeight="0.48932764" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3815368" sideWeight="0.688326" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.311674" sideWeight="0.48932764" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Kotlin" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.311674" sideWeight="0.506937" order="10" side_tool="true" content_ui="tabs" />
@@ -929,53 +939,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/ideaIC-12.0-src/ideaIC-123.72/platform/lang-impl/src/com/intellij/psi/formatter/common/AbstractBlock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="0" selection-start="2050" selection-end="2050" vertical-scroll-proportion="0.33222038">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="796" selection-end="796" vertical-scroll-proportion="-0.22036728">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/model/QTree.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="73" selection-start="279" selection-end="279" vertical-scroll-proportion="0.22704507">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/jdk/src.zip!/java/util/HashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1002" column="25" selection-start="34700" selection-end="34700" vertical-scroll-proportion="0.33222038">
-          <folding>
-            <element signature="method#values#0;class#HashMap#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/model/FixedSyntax.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="44" selection-start="892" selection-end="892" vertical-scroll-proportion="0.7378965">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/model/AbstractSyntax.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="22" selection-start="173" selection-end="173" vertical-scroll-proportion="0.22704507">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/InitializePsiLexerAction.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="12" selection-start="733" selection-end="733" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -989,13 +955,6 @@
             <element signature="method#setName#0;class#ELASTNode#0" expanded="true" />
             <element signature="method#getReferences#0;class#ELASTNode#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/formatter/ELBlock.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1013,30 +972,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/ELLexer.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="0" selection-start="2555" selection-end="2555" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!block;n#start#0;n#!!block;n#ELLexer#0" expanded="false" />
-            <element signature="n#!!block;n#getState#0;n#!!block;n#ELLexer#0" expanded="false" />
-            <element signature="n#!!block;n#getTokenType#0;n#!!block;n#ELLexer#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/kotlin-runtime.jar!/src/kotlin/StringsJVM.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="372" column="29" selection-start="16037" selection-end="16037" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/model/ELToken.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="0" selection-start="3348" selection-end="3348" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1344#1390#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1049,7 +988,76 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/formatter/ELFormattingModelBuilder.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="33" selection-start="1935" selection-end="1935" vertical-scroll-proportion="0.5459098">
+        <state line="34" column="54" selection-start="1442" selection-end="1442" vertical-scroll-proportion="0.37562606">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/formatter/ELBlock.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="8" selection-start="1429" selection-end="1429" vertical-scroll-proportion="0.68781304">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/util/Util.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="33" selection-start="2159" selection-end="2164" vertical-scroll-proportion="0.48247078">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/model/ELToken.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="0" selection-start="3348" selection-end="3348" vertical-scroll-proportion="0.33222038">
+          <folding>
+            <element signature="e#1344#1390#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/ELLexer.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="0" selection-start="2555" selection-end="2555" vertical-scroll-proportion="0.33222038">
+          <folding>
+            <element signature="n#!!block;n#start#0;n#!!block;n#ELLexer#0" expanded="false" />
+            <element signature="n#!!block;n#getState#0;n#!!block;n#ELLexer#0" expanded="false" />
+            <element signature="n#!!block;n#getTokenType#0;n#!!block;n#ELLexer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/highlighter/ELSyntaxHighlighter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="50" selection-start="2437" selection-end="2437" vertical-scroll-proportion="0.94323874">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/usages/ELFindUsagesProvider.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="39" selection-start="923" selection-end="923" vertical-scroll-proportion="-0.13522537">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/machine/Instruction.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="16" selection-start="657" selection-end="657" vertical-scroll-proportion="-0.078464106">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/util/Extensions.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="14" selection-start="289" selection-end="289" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/src/com/extlang/engine/parser/machine/Program.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="4" selection-start="345" selection-end="345" vertical-scroll-proportion="0.36894825">
           <folding />
         </state>
       </provider>
