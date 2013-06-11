@@ -7,16 +7,19 @@ import com.extlang.engine.QTreeTermNode
 import com.extlang.engine.QTreeNonTermNode
 import com.extlang.engine.QTreeRefNode
 
-
+/**A program is a list of instructions*/
 
 class Program: ArrayList<Instruction>()
 {
+
     public override fun toString(): String =
             fold("", {(acc, elem) -> acc + "\n" + elem.toString() })
 
     class object {
+        // Constructs a program to build a tree similar to QTree provided.
         public fun fromQTree(tree: QTree): Program
         {
+            //dfs starting with t while adding elements to prog
             fun traverse (t: QTreeNode, prog: Program)
             {
                 when (t)

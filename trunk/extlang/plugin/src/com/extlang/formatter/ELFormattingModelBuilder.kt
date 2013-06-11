@@ -21,7 +21,6 @@ import com.extlang.engine.TermNumber
 
 public open class ELFormattingModelBuilder(): FormattingModelBuilder {
     public override fun createModel(element: PsiElement?, settings: CodeStyleSettings?): FormattingModel {
-        LogMessageEx.createEvent("Hello", "details")
         return FormattingModelProvider.createFormattingModelForPsiFile(
                 element?.getContainingFile(),
                 ELBlock(element?.getNode(),
@@ -37,7 +36,6 @@ public open class ELFormattingModelBuilder(): FormattingModelBuilder {
     private open fun createSpaceBuilder(settings: CodeStyleSettings?): SpacingBuilder? {
         var spacing = SpacingBuilder(settings)
         val punctuation = ELToken.PunctuationTokens()
-        //spacing = spacing.around(ELToken.AllIdentifiers())!!.spaces(1)!!
 
         val terminalTokens = ELToken.TerminalTokens().filterNot {(tok) -> punctuation.containsItem(tok) && tok.Sym != TermNumber.Instance }
         spacing = terminalTokens.fold(spacing,
