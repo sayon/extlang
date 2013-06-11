@@ -37,6 +37,13 @@ class Util
             return acc
         }
 
+        fun nodeFilter (node: ASTNode): Boolean
+        {
+            val tok = node.getElementType();
+            return tok is ELToken && !tok.isNonTerminal
+        }
+        public fun CollectLeaves (root: ASTNode): List<ASTNode> =
+                CollectDescendants(root, {(node) -> nodeFilter(node) })
         public fun  findIdentifiers(project: Project, key: String? = null): List<ASTNode>
         {
             val result = ArrayList<ASTNode>()
@@ -56,9 +63,7 @@ class Util
                         result.addAll(Util.CollectDescendants(file.getNode(), {(node)-> node.getElementType() == token }))
                     }
                     else
-                    {
                         result.addAll(Util.CollectDescendants(file.getNode(), {(node)-> node.getElementType() is TokIdentifier }))
-                    }
             }
 
             return result
