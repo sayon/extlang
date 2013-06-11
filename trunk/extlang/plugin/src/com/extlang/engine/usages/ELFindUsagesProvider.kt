@@ -19,7 +19,6 @@ import com.intellij.util.Processor
 
 import com.intellij.psi.tree.IElementType
 import com.intellij.lexer.Lexer
-import com.extlang.PsiLexer
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiDocumentManager
 
