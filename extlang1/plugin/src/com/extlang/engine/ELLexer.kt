@@ -198,7 +198,7 @@ open class PsiLexer(): LexerBase()
         public fun setRoot  (elem: PsiElement)
         {
             RootElement = elem
-            _nodes = Util.CollectDescendants(RootElement!!.getNode(), {(node) -> (node.getChildren(null)!!.size == 0 && node.getPsi()!!.textRepr().length() > 0) ||
+            _nodes = Util.CollectDescendants(RootElement!!.getNode()!!, {(node) -> (node.getChildren(null)!!.size == 0 && node.getPsi()!!.textRepr().length() > 0) ||
             ( node is ELASTNode  && node.getName()!!.length > 0 )})
             _nodesCount = if (_nodes != null) _nodes!!.count() else 0
 
@@ -220,7 +220,7 @@ open class PsiLexer(): LexerBase()
         _endOffset = endOffset
         _tokenStart = startOffset
         _tokenEnd = if (getCurrentNode() != null) ( getCurrentNode()!!.getTextLength() - 1 ) else 0
-        _nodes = if (RootElement == null) null else     Util.CollectDescendants(RootElement?.getNode(), {(node) -> node.getChildren(null)!!.size == 0 && node.getPsi()!!.textRepr().length() > 0 })
+        _nodes = if (RootElement == null) null else     Util.CollectDescendants(RootElement?.getNode()!!, {(node) -> node.getChildren(null)!!.size == 0 && node.getPsi()!!.textRepr().length() > 0 })
         _nodesCount = if (_nodes != null) _nodes!!.count() else 0
         _currentPosition = 0
     }

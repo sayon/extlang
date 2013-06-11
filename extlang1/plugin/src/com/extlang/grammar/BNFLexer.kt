@@ -32,18 +32,18 @@ public open class BNFLexer(): LexerBase() {
     class object {
         public val _keywordToToken: HashMap<String, BNFTokenType> = HashMap<String, BNFTokenType>();
         {
-            _keywordToToken.put("as", BNFSimpleTypes.AS);
-            _keywordToToken.put(";", BNFSimpleTypes.SEMICOLON);
-            _keywordToToken.put("->", BNFSimpleTypes.ARROW);
-            _keywordToToken.put("::=", BNFSimpleTypes.EQUAL);
-            _keywordToToken.put("<", BNFSimpleTypes.LEFTANGLE);
-            _keywordToToken.put(">", BNFSimpleTypes.RIGHTANGLE);
-            _keywordToToken.put("{", BNFSimpleTypes.LEFTBRACE);
-            _keywordToToken.put("}", BNFSimpleTypes.RIGHTBRACE);
-            _keywordToToken.put("--nonterminals:", BNFSimpleTypes.NONTERMINALSCAPTION);
-            _keywordToToken.put("--starter:", BNFSimpleTypes.STARTERCAPTION);
-            _keywordToToken.put("--terminals:", BNFSimpleTypes.TERMINALSCAPTION);
-            _keywordToToken.put("--rules:", BNFSimpleTypes.RULESCAPTION);
+            _keywordToToken.put("as", BNFSimpleTypes.AS as BNFTokenType);
+            _keywordToToken.put(";", BNFSimpleTypes.SEMICOLON as BNFTokenType);
+            _keywordToToken.put("->", BNFSimpleTypes.ARROW as BNFTokenType);
+            _keywordToToken.put("::=", BNFSimpleTypes.EQUAL as BNFTokenType);
+            _keywordToToken.put("<", BNFSimpleTypes.LEFTANGLE as BNFTokenType);
+            _keywordToToken.put(">", BNFSimpleTypes.RIGHTANGLE as BNFTokenType);
+            _keywordToToken.put("{", BNFSimpleTypes.LEFTBRACE as BNFTokenType);
+            _keywordToToken.put("}", BNFSimpleTypes.RIGHTBRACE as BNFTokenType);
+            _keywordToToken.put("--nonterminals:", BNFSimpleTypes.NONTERMINALSCAPTION as BNFTokenType);
+            _keywordToToken.put("--starter:", BNFSimpleTypes.STARTERCAPTION as BNFTokenType);
+            _keywordToToken.put("--terminals:", BNFSimpleTypes.TERMINALSCAPTION as BNFTokenType);
+            _keywordToToken.put("--rules:", BNFSimpleTypes.RULESCAPTION as BNFTokenType);
         }
     }
     private var _buffer: CharSequence? = null
