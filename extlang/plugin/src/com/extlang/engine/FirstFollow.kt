@@ -5,7 +5,8 @@ import java.util.HashMap
 import java.util.HashSet
 import com.extlang.engine.model.Rule
 
-/**This class represents a pair of first nad follow sets, built after a grammar to create parsing table
+/**This class represents a pair of first and follow sets, built after a grammar to create parsing table.
+ * It is not to be modified under any circumstances so I left it undocumented.
  */
 class FirstFollow (public val SyntaxProvided: AbstractSyntax)
 {
@@ -63,7 +64,7 @@ class FirstFollow (public val SyntaxProvided: AbstractSyntax)
         return _first[symbol]
     }
 
-    //Very ineffective!
+    //Very ineffective, perharps!
     public fun first(symbols: Iterable<Symbol>): HashSet<Terminal>
     {
         val result = HashSet<Terminal>()
