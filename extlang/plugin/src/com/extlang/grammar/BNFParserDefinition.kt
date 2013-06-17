@@ -5,7 +5,6 @@ import com.extlang.grammar.BNFFile
 import com.extlang.grammar.psi.BNFParser
 import com.extlang.grammar.psi.BNFSimpleTypes
 import com.intellij.lang.ASTNode
-import com.intellij.lang.Language
 import com.intellij.lang.ParserDefinition
 import com.intellij.lang.ParserDefinition.SpaceRequirements
 import com.intellij.lang.PsiParser
@@ -18,12 +17,6 @@ import com.intellij.psi.PsiFile
 import com.intellij.psi.TokenType
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
-import com.extlang.engine.FixedSyntax
-import com.intellij.openapi.fileEditor.impl.http.LocalFileFinder
-import com.intellij.openapi.vfs.VirtualFile
-import com.intellij.openapi.vfs.LocalFileSystem
-import com.intellij.extapi.psi.PsiFileBase
-import com.extlang.engine.GrammarBuilder
 import com.intellij.psi.tree.IElementType
 import com.extlang.grammar.BNFElementType
 import com.extlang.grammar.BNFLanguage
@@ -31,7 +24,7 @@ import com.extlang.grammar.BNFLanguage
 class BNFParserDefinition: ParserDefinition
 {
     class object {
-        val FILE: IFileElementType? = IFileElementType(Language.findInstance<BNFLanguage?>(BNFLanguage.INSTANCE!!.getClass()))
+        val FILE: IFileElementType? = IFileElementType(BNFLanguage.INSTANCE!!)
         val LOG = Logger.getInstance("#com.intellij.lang.properties.PropertiesParserDefinition")
         val TOKENS_WHITE_SPACE = TokenSet.create(TokenType.WHITE_SPACE)
         val COMMENT : IElementType = BNFElementType("COMMENT")

@@ -13,20 +13,16 @@ import com.intellij.formatting.WrapType
 import com.intellij.formatting.SpacingBuilder
 import com.extlang.engine.model.ELToken
 import com.intellij.formatting.Alignment
-import com.intellij.diagnostic.LogMessageEx
-import com.extlang.engine.model.ExtendedSyntax
-import com.intellij.psi.tree.TokenSet
 import com.extlang.engine.TermNumber
-
 
 public open class ELFormattingModelBuilder(): FormattingModelBuilder {
     public override fun createModel(element: PsiElement?, settings: CodeStyleSettings?): FormattingModel {
         return FormattingModelProvider.createFormattingModelForPsiFile(
                 element?.getContainingFile(),
-                ELBlock(element?.getNode(),
+                ELBlock(element?.getNode()!!,
                         Wrap.createWrap(WrapType.NONE, false),
                         Alignment.createAlignment(),
-                        createSpaceBuilder(settings)),
+                        createSpaceBuilder(settings)!!),
                 settings)!!
     }
     public override fun getRangeAffectingIndent(file: PsiFile?, offset: Int, elementAtOffset: ASTNode?): TextRange? {

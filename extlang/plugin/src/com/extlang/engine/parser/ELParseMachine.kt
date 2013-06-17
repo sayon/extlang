@@ -1,22 +1,12 @@
 package com.extlang.engine.parser
 
-import com.intellij.extapi.psi.ASTWrapperPsiElement
 import com.intellij.lang.ASTNode
 import com.intellij.lang.PsiBuilder
-import com.intellij.psi.tree.IElementType
-
 import com.intellij.lang.PsiBuilder.Marker
-import com.intellij.lang.PsiParser
 import com.intellij.psi.TokenType
 import com.intellij.psi.tree.IElementType
 import java.util.Stack
-import java.util.HashSet
-import com.intellij.psi.text.BlockSupport
-import com.intellij.lang.impl.PsiBuilderImpl
-import java.util.ArrayList
-import com.extlang.engine.parser.ELParseMachine
 import com.extlang.engine.*
-
 import com.extlang.parser.ELParserDefinition
 import java.util.HashMap
 import com.extlang.engine.parser.machine.Instruction
@@ -96,7 +86,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
     }
 
     /** Generates program to parse the whole file
-    */
+     */
     public fun parse(root: IElementType?, builder: PsiBuilder?): ASTNode
     {
         val m = builder!!.mark()!!
@@ -137,7 +127,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
                     {
                         if (instr.Term == TermIdent.Instance)
                         {
-                            val tok = ELToken.fromIdentifier(instr.Name)
+                            val tok = ELToken.fromIdentifier(instr.Name!!)
                             builder.mark()!!.done(tok)
                         }
                         else builder.mark()!!.done(ELToken.fromTerminal(instr.Term))
@@ -157,7 +147,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
                 is Instruction.InsertTree ->
                     executeProgram(environment[instr.AliasName]!!, builder, environment, instr.isPhantom)
                 is Instruction.StoreNonTerminal ->
-                    environment.put(instr.AliasName, generateProgram(instr.NonTerm, builder))
+                    environment.put(instr.AliasName, generateProgram(instr.NonTerm, builder)!!)
 
                 else ->
                     throw UnsupportedOperationException("instruction ${instr.toString()} is not yet supported")
@@ -166,7 +156,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
     }
 
     /**Generates program to parse NonTerminal nt with PsiBuilder builder
-    */
+     */
     public fun generateProgram(nt: NonTerminal, builder: PsiBuilder): Program? {
         val program = Program()
         val stack = ParsingStack()
@@ -246,7 +236,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
                                 ctoken.Sym -> {
 
                                     val name = if (ctoken is TokIdentifier) ctoken.Name else null
-                                    program.add(Instruction.TerminalNode(ctoken.Sym, name));
+                                    program.add(Instruction.TerminalNode(ctoken.Sym as Terminal, name));
 
                                     stack.pop();
                                     advance()
@@ -254,7 +244,7 @@ class ELParseMachine(public val ParseTable: GrammarTable)
                                 else ->
                                     {
                                         if (top.AliasedName != null)
-                                            program.add(Instruction.StoreNonTerminal(top.Sym, top.AliasedName))
+                                            program.add(Instruction.StoreNonTerminal(top.Sym as NonTerminal, top.AliasedName))
                                         error = !applyRule(builder, ctoken)
                                     }
                             }

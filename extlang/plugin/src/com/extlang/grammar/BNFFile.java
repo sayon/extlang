@@ -1,6 +1,5 @@
 package com.extlang.grammar;
 
-import com.extlang.grammar.BNFLanguage;
 import com.intellij.extapi.psi.PsiFileBase;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.psi.FileViewProvider;
@@ -11,7 +10,7 @@ import javax.swing.*;
 
 public class BNFFile extends PsiFileBase {
     public BNFFile(@NotNull FileViewProvider viewProvider) {
-        super(viewProvider, BNFLanguage.object.$instance.getINSTANCE());
+        super(viewProvider, BNFLanguage.object$.getINSTANCE());
     }
 
     @NotNull

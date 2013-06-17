@@ -30,7 +30,7 @@ public open class BNFLexer(): LexerBase() {
         return c.isJavaIdentifierStart() || c == ALIAS_STARTING_SYMBOL || c == '\''
     }
     class object {
-        public val _keywordToToken: HashMap<String, BNFTokenType> = HashMap<String, BNFTokenType>();
+        public val _keywordToToken: HashMap<String, IElementType> = HashMap<String, IElementType>();
         {
             _keywordToToken.put("as", BNFSimpleTypes.AS);
             _keywordToToken.put(";", BNFSimpleTypes.SEMICOLON);
@@ -75,7 +75,7 @@ public open class BNFLexer(): LexerBase() {
 
     public override fun getTokenType(): IElementType? {
 
-       // System.err.println("getTokenType: ${(if (_currentToken == null) "null" else _currentToken.toString())}")
+        // System.err.println("getTokenType: ${(if (_currentToken == null) "null" else _currentToken.toString())}")
         return _currentToken
     }
 
@@ -177,7 +177,7 @@ public open class BNFLexer(): LexerBase() {
             if (_buffer!!.compareWith(_currentLexerPosition, key))
             {
                 _currentLexerPosition += key.length
-                return _keywordToToken[key]
+                return _keywordToToken[key] as BNFTokenType
             }
         }
         return null
@@ -233,7 +233,7 @@ public open class BNFLexer(): LexerBase() {
             }
             if (currentPeekPosition < _endOffset &&
             ( _buffer!![currentPeekPosition] == '#'
-            || _buffer!![currentPeekPosition]== '\n' ) )
+            || _buffer!![currentPeekPosition] == '\n' ) )
             {
                 currentPeekPosition++
                 _currentLexerPosition = currentPeekPosition

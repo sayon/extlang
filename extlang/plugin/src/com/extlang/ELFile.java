@@ -1,6 +1,5 @@
 package com.extlang;
 
-import com.extlang.ELCodeFileType;
 import com.extlang.engine.ELLanguage;
 import com.intellij.extapi.psi.PsiFileBase;
 import com.intellij.openapi.fileTypes.FileType;
@@ -11,7 +10,7 @@ import javax.swing.*;
 
 public class ELFile extends PsiFileBase {
     public ELFile(@NotNull FileViewProvider viewProvider) {
-        super(viewProvider, ELLanguage.object.$instance.getINSTANCE());
+        super(viewProvider, ELLanguage.object$.getINSTANCE());
     }
 
     @NotNull

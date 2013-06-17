@@ -11,7 +11,7 @@ public class ELCodeFileType extends LanguageFileType {
     public static final ELCodeFileType INSTANCE = new ELCodeFileType();
 
     private ELCodeFileType() {
-        super(ELLanguage.object.$instance.getINSTANCE());
+        super(ELLanguage.object$.getINSTANCE());
     }
 
     @NotNull

@@ -1,13 +1,12 @@
 package com.extlang.engine
 
-import com.extlang.util.cartesian
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.HashSet
 import com.extlang.engine.model.Rule
 
 /**This class represents a pair of first nad follow sets, built after a grammar to create parsing table
-*/
+ */
 class FirstFollow (public val SyntaxProvided: AbstractSyntax)
 {
     private var _first: HashMap<Symbol, HashSet<Terminal>> = HashMap<Symbol, HashSet<Terminal>>();
@@ -78,7 +77,7 @@ class FirstFollow (public val SyntaxProvided: AbstractSyntax)
                 break
             }
             else
-                result.addAll(first(sym))
+                result.addAll(first(sym)!!)
         }
         if (containsEpsilon) result.add(TermEpsilon.Instance)
 

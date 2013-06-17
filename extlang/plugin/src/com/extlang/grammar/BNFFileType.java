@@ -1,6 +1,5 @@
 package com.extlang.grammar;
 
-import com.extlang.grammar.BNFLanguage;
 import com.extlang.Icons;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import org.jetbrains.annotations.NotNull;
@@ -12,7 +11,7 @@ public class BNFFileType extends LanguageFileType {
     public static final BNFFileType INSTANCE = new BNFFileType();
 
     private BNFFileType() {
-        super(BNFLanguage.object.$instance.getINSTANCE());
+        super(BNFLanguage.object$.getINSTANCE());
     }
 
     @NotNull

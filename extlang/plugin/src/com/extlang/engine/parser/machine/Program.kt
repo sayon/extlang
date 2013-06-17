@@ -33,13 +33,13 @@ class Program: ArrayList<Instruction>()
                         prog.add(Instruction.NonTerminalNodeClose())
                     }
                     is QTreeRefNode ->
-                        prog.add(Instruction.InsertTree(t.RefName,true))
+                        prog.add(Instruction.InsertTree(t.RefName, true))
                     else -> {
                     }
                 }
             }
             val ret = Program()
-            traverse(tree.Root, ret)
+            traverse(tree.Root!!, ret)
             return ret
         }
     }
