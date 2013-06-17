@@ -6,9 +6,6 @@ import com.intellij.lang.ASTNode
 import com.extlang.util.Util
 import com.extlang.engine.model.TokIdentifier
 import com.intellij.psi.tree.IElementType
-import com.extlang.engine.parser.ELASTNode
-import com.extlang.engine.model.ELToken
-
 
 /**
 This is a custom lexer that walks PSI tree and gives you all the 'leaf' tokens, including ones
@@ -16,7 +13,7 @@ occupying zero space.
 This lexer should be initialized via init method in class object first!
 Currently this class is not used anywhere.
 
-*/
+ */
 
 open class PsiLexer(): LexerBase()
 {
@@ -34,7 +31,7 @@ open class PsiLexer(): LexerBase()
         public fun init  (elem: PsiElement)
         {
             RootElement = elem
-            _nodes = Util.CollectLeaves(RootElement!!.getNode())
+            _nodes = Util.CollectLeaves(RootElement!!.getNode()!!)
             _nodesCount = if (_nodes != null) _nodes!!.count() else 0
         }
 
@@ -53,7 +50,7 @@ open class PsiLexer(): LexerBase()
         _endOffset = endOffset
         _tokenStart = startOffset
         _tokenEnd = if (getCurrentNode() != null) ( getCurrentNode()!!.getTextLength() - 1 ) else 0
-        _nodes = Util.CollectLeaves(RootElement!!.getNode())
+        _nodes = Util.CollectLeaves(RootElement!!.getNode()!!)
         _nodesCount = if (_nodes != null) _nodes!!.count() else 0
         _currentPosition = 0
     }

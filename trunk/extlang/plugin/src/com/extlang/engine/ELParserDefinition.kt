@@ -4,10 +4,8 @@ import com.extlang.ELLexer
 import com.extlang.engine.ELLanguage
 import com.extlang.ELFile
 import com.intellij.lang.ASTNode
-import com.intellij.lang.Language
 import com.intellij.lang.ParserDefinition
 import com.intellij.lang.ParserDefinition.SpaceRequirements
-import com.intellij.lang.PsiBuilder
 import com.intellij.lang.PsiParser
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.diagnostic.Logger
@@ -16,19 +14,15 @@ import com.intellij.psi.FileViewProvider
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.TokenType
-import com.intellij.psi.impl.source.tree.CompositePsiElement
-import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 import com.extlang.engine.ELParser
 import com.extlang.engine.parser.ELASTNode
-import com.extlang.engine.model.ELToken
-import com.extlang.engine.TermIdent
-import com.extlang.engine.model.TokIdentifier
+
 class ELParserDefinition: ParserDefinition
 {
     class object {
-        val FILE: IFileElementType? = IFileElementType(Language.findInstance<ELLanguage?>(ELLanguage.INSTANCE!!.getClass()))
+        val FILE: IFileElementType? = IFileElementType(ELLanguage.INSTANCE!!)
         val LOG = Logger.getInstance("#com.intellij.lang.properties.PropertiesParserDefinition")
         val TOKENS_WHITE_SPACE = TokenSet.create(TokenType.WHITE_SPACE)
         val TOKENS_COMMENTS = TokenSet.EMPTY

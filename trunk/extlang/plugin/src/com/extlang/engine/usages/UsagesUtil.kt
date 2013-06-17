@@ -1,17 +1,9 @@
 package com.extlang.engine.usages
 
 import com.intellij.psi.PsiReference
-import com.intellij.util.ProcessingContext
 import com.intellij.psi.PsiElement
-import com.extlang.engine.parser.ELASTNode
-import com.extlang.engine.model.TokIdentifier
-import com.intellij.openapi.util.TextRange
-import java.util.ArrayList
 import com.extlang.util.Util
 import com.intellij.psi.PsiNamedElement
-import com.intellij.psi.PsiReferenceBase.Immediate
-import com.intellij.openapi.project.Project
-
 
 class UsagesUtil
 {
@@ -28,7 +20,7 @@ class UsagesUtil
         public fun firstIdentifierReference(element: PsiNamedElement): PsiReference?
         {
             val ident = firstIdentifier(element)
-            return if (ident != null) ELReference(element, element.getTextRange(), ident!!.getParent())
+            return if (ident != null) ELReference(element, element.getTextRange()!!, ident.getParent()!!)
             else null
         }
 
