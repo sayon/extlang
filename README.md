@@ -14,7 +14,18 @@ These goals were accomplished (some partially). The project's language is Kotlin
 
 The descriptions support only plain BNF form. Use PsiViewer to see if they were parsed correctly. All terminals should be written with CAPITAL LETTERS, while non-terminals should be written lowercase (you can also use an apostrophe ('). the grammar is taken 'as-is' so no left recursion is eliminated etc. An example follows:
 
---nonterminals: e e' s s' t t' f s'' ext id elsepart --starter: s' --terminals: SEMI ";" LPAR "(" RPAR ")" WRITE "write" IF "if" FI "fi" LBRACE "{" RBRACE "}" PLUS "+" MUL "*" MINUS "-" DIV "/" WHILE "while" DO "do" ELSE "else" WRITE "write" READ "read" ASSIGN ":=" REPEAT "repeat" UNTIL "until" SKIP "skip" NOT "!" COMPARE "==" DONE "done" --rules: s' ::= s s'' ; s'' ::= SEMI s' ; s'' ::= EPSILON ; s' ::= LBRACE s' RBRACE ; s ::= SKIP ; s ::= id ASSIGN e ; s ::= EPSILON ; s ::= WHILE e DO s' DONE ; s ::= IF LPAR e RPAR s elsepart FI; s ::= WRITE e ; s ::= READ id; elsepart ::= ELSE s ; elsepart ::= EPSILON ; e ::= LPAR e RPAR ; e ::= NOT e ; e ::= t e' ; e' ::= PLUS t e' ; e' ::= MINUS t e' ; e' ::= COMPARE t e' ; e' ::= EPSILON; t ::= f t'; t' ::= MUL f t' ; t' ::= DIV f t' ; t' ::= EPSILON ; f ::= NUM; f ::= id; id ::= IDENT; s ::= ext ; ext ::= REPEAT { s' as $action } UNTIL { e as $condition } -> { < s' ; < $action > < s'' ;< SEMI >< s' ;< s ;< WHILE >< e ;< NOT >< $condition >>< DO >< $action > < DONE >> < s'' >>>> } ;
+```
+--nonterminals: e e' s s' t t' f s'' ext id elsepart 
+--starter: s' 
+--terminals: 
+SEMI ";" 
+LPAR "(" 
+RPAR ")" 
+WRITE "write" 
+IF "if" 
+FI "fi" 
+LBRACE "{"
+RBRACE "}" PLUS "+" MUL "*" MINUS "-" DIV "/" WHILE "while" DO "do" ELSE "else" WRITE "write" READ "read" ASSIGN ":=" REPEAT "repeat" UNTIL "until" SKIP "skip" NOT "!" COMPARE "==" DONE "done" --rules: s' ::= s s'' ; s'' ::= SEMI s' ; s'' ::= EPSILON ; s' ::= LBRACE s' RBRACE ; s ::= SKIP ; s ::= id ASSIGN e ; s ::= EPSILON ; s ::= WHILE e DO s' DONE ; s ::= IF LPAR e RPAR s elsepart FI; s ::= WRITE e ; s ::= READ id; elsepart ::= ELSE s ; elsepart ::= EPSILON ; e ::= LPAR e RPAR ; e ::= NOT e ; e ::= t e' ; e' ::= PLUS t e' ; e' ::= MINUS t e' ; e' ::= COMPARE t e' ; e' ::= EPSILON; t ::= f t'; t' ::= MUL f t' ; t' ::= DIV f t' ; t' ::= EPSILON ; f ::= NUM; f ::= id; id ::= IDENT; s ::= ext ; ext ::= REPEAT { s' as $action } UNTIL { e as $condition } -> { < s' ; < $action > < s'' ;< SEMI >< s' ;< s ;< WHILE >< e ;< NOT >< $condition >>< DO >< $action > < DONE >> < s'' >>>> } ;
 
 There are following terminal symbols you do not need to enumerate yourself: NUM (any number, can be negative, but no space between number and sign is allowed) IDENT (identifier) EPSILON (empty string)
 
