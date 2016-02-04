@@ -25,7 +25,52 @@ WRITE "write"
 IF "if" 
 FI "fi" 
 LBRACE "{"
-RBRACE "}" PLUS "+" MUL "*" MINUS "-" DIV "/" WHILE "while" DO "do" ELSE "else" WRITE "write" READ "read" ASSIGN ":=" REPEAT "repeat" UNTIL "until" SKIP "skip" NOT "!" COMPARE "==" DONE "done" --rules: s' ::= s s'' ; s'' ::= SEMI s' ; s'' ::= EPSILON ; s' ::= LBRACE s' RBRACE ; s ::= SKIP ; s ::= id ASSIGN e ; s ::= EPSILON ; s ::= WHILE e DO s' DONE ; s ::= IF LPAR e RPAR s elsepart FI; s ::= WRITE e ; s ::= READ id; elsepart ::= ELSE s ; elsepart ::= EPSILON ; e ::= LPAR e RPAR ; e ::= NOT e ; e ::= t e' ; e' ::= PLUS t e' ; e' ::= MINUS t e' ; e' ::= COMPARE t e' ; e' ::= EPSILON; t ::= f t'; t' ::= MUL f t' ; t' ::= DIV f t' ; t' ::= EPSILON ; f ::= NUM; f ::= id; id ::= IDENT; s ::= ext ; ext ::= REPEAT { s' as $action } UNTIL { e as $condition } -> { < s' ; < $action > < s'' ;< SEMI >< s' ;< s ;< WHILE >< e ;< NOT >< $condition >>< DO >< $action > < DONE >> < s'' >>>> } ;
+RBRACE "}" 
+PLUS "+"
+MUL "*"
+MINUS "-"
+DIV "/" 
+WHILE "while" 
+DO "do" 
+ELSE "else" 
+WRITE "write" 
+READ "read" 
+ASSIGN ":="
+REPEAT "repeat" 
+UNTIL "until" 
+SKIP "skip" 
+NOT "!" 
+COMPARE "==" 
+DONE "done" 
+--rules: 
+s' ::= s s'' ;
+s'' ::= SEMI s' ;
+s'' ::= EPSILON ; 
+s' ::= LBRACE s' RBRACE ; 
+s ::= SKIP ;
+s ::= id ASSIGN e ;
+s ::= EPSILON ; 
+s ::= WHILE e DO s' DONE ;
+s ::= IF LPAR e RPAR s elsepart FI; 
+s ::= WRITE e ; 
+s ::= READ id; 
+elsepart ::= ELSE s ; 
+elsepart ::= EPSILON ; 
+e ::= LPAR e RPAR ; 
+e ::= NOT e ; 
+e ::= t e' ; 
+e' ::= PLUS t e' ; 
+e' ::= MINUS t e' ; 
+e' ::= COMPARE t e' ; 
+e' ::= EPSILON; t ::= f t';
+t' ::= MUL f t' ; 
+t' ::= DIV f t' ; 
+t' ::= EPSILON ; 
+f ::= NUM; f ::= id;
+id ::= IDENT;
+s ::= ext ;
+ext ::= REPEAT { s' as $action } UNTIL { e as $condition } -> { < s' ; < $action > < s'' ; < SEMI >< s' ;< s ;< WHILE >< e ;< NOT >< $condition >>< DO >< $action > < DONE >> < s'' >>>> } ;
+```
 
 There are following terminal symbols you do not need to enumerate yourself: NUM (any number, can be negative, but no space between number and sign is allowed) IDENT (identifier) EPSILON (empty string)
 
